@@ -1,0 +1,109 @@
+/* General*/
+
+@font-face {
+    font-family: adventPro;
+    src: url(/static/playel/font/adventpro-extralight.ttf);
+}
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Texts */
+
+h1, h2, p {
+  text-align: center;
+  font-weight: normal;
+  font-family: adventPro;
+  margin: 0;
+}
+h1 {
+  font-size: 50pt;
+}
+h2 {
+  font-size: 30pt;
+}
+p, li {
+  font-size: 16pt;
+  font-family: sans-serif;
+}
+a, a:link, a:visited, a:active {
+  text-decoration: none;
+  border-style: none;
+  outline: 0;
+  tap-highlight-color: transparent;
+  -moz-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  color: inherit;
+}
+.hover {
+  transition: all 1s;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.hover:hover, .hover:focus {
+  color: #000;
+  background-color: #fff;
+}
+
+/* Thumb */
+
+.thumblist {
+  display: table;
+}
+.thumb {
+  display: table-cell;
+  width: 256px;
+  height: 256px;
+  border: 1px solid #fff;
+}
+.thumb a {
+  display: block; /*useless*/
+}
+.thumb img {
+  max-width: 256px;
+  max-height: 256px;
+}
+
+/* Player */
+
+.player {
+  position: absolute;
+  margin-top: -250px;
+  margin-left: -250px;
+  top: 55%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+}
+.button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 340px;
+}
+svg {
+  padding: 20px;
+}
+.path {
+  stroke: #ffffff;
+  stroke-width: 1.3;
+}
+#pbar {
+  display: block;
+  border: 1px #fff solid;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 510px;
+}
+
+/* Footer */
+
+/*footer {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}*/

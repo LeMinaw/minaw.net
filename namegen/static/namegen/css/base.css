@@ -1,0 +1,166 @@
+/* Body */
+
+body{
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+/* Navigation */
+
+nav {
+  min-width: 700px;
+  max-width: 1100px;
+  margin: auto;
+}
+nav ul{
+  display: table;
+  margin: 20px auto;
+}
+nav li{
+  display: table-cell;
+}
+nav a{
+  padding: 20px 60px;
+}
+
+/* Titles */
+
+h1, h2 {
+  margin: 15px 0;
+}
+h1 {
+  font-variant: small-caps;
+  font-size: 3rem;
+  font-weight: normal;
+}
+h1:first-letter {
+  font-size: 4.5rem;
+}
+h2 {
+  font-size: 1.8rem;
+}
+
+/* Links */
+
+a {
+  color: #0090f0;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+/* Contents */
+
+#content {
+  width: 70%;
+  min-width: 500px;
+  max-width: 900px;
+  margin: auto;
+  padding: 30px 100px;
+  box-shadow:         3px 3px 10px 3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow:    3px 3px 10px 3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.75);
+}
+
+/* Checkboxes */
+
+input[type="checkbox"] {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+input[type="checkbox"] + label{
+  margin: -15 0 0 0;
+  display: block;
+}
+input[type="checkbox"] + label:before {
+  content: " "; /* Content must be defined. Otherwise, no background will be displayed.*/
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  position : relative;
+  top : 10px;
+  background-image: url("/static/namegen/img/checkbox-false.png");
+}
+input[type="checkbox"]:checked + label:before {
+  background-image: url("/static/namegen/img/checkbox-true.png");
+}
+
+/* Number fields */
+
+input[type="number"] {
+  width: 40px;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid;
+  border-radius: 4px;
+  background-color: #ffffff;
+  margin-bottom: 18px;
+}
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { /* Webkit comp. only... */
+  appearance: none;
+  margin: 0; 
+}
+
+/* Submit */
+
+input[type="submit"] {
+  font-weight: bold;
+  font-size: 1.2rem;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  background-color: #ffffff;
+  transition: all .5s;
+}
+input[type="submit"]:hover {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+/* Lists */
+
+ol {
+  list-style-type: hebrew;
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  column-count: 3;
+  color: #444444;
+}
+.result::first-letter {
+  text-transform: uppercase;
+  font-size: 110%;
+}
+
+/* Results */
+
+.result {
+  color: #000000;
+  position: relative;
+  border-radius: 6px;
+  padding: 0 4px;
+  transition: all .5s;
+  text-transform: capitalize;
+}
+.result:hover {
+  color: #ffffff;
+  background: #000000;
+}
+
+.like {
+  visibility: hidden;
+  color: #ffffff;
+}
+.result:hover .like {
+  visibility: visible;
+}
+
+/* Footer */
+
+footer {
+  margin: 40px 0 0 0;
+}
+footer p {
+  text-align: center;
+}

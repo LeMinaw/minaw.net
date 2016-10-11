@@ -1,0 +1,21 @@
+{% extends "namegen/base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'namegen/css/about.css' %}">
+{% endblock %}
+
+{% block title %}
+  À propos
+{% endblock %}
+
+{% block content %}
+  <h1>À propos</h1>
+  <h2>Qu'est ce que c'est quoi dis donc ?</h2>
+  <p>Bla bla de présentation de circonstance, <b>huh houh</b> <i>ha ji</i> yoooo !</p>
+  <h2>Quelques statistiques</h2>
+  <p>Depuis sa mise en ligne, l'algorithme a généré {{ generatedSequences }} séquences, réparties sur {{ generatedPages }} requêtes de génération. {{ generationTime }} de calcul auront été nécéssaires pour y parvenir.</p>
+  <h2>Technologies utilisées</h2>
+  <p>Plein.</p>
+{% endblock %}

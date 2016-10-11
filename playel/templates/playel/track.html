@@ -1,0 +1,76 @@
+{% extends "playel/base.html" %}
+
+{% load staticfiles %}
+{% load humanize        %}
+{% load humanize_extras %}
+
+{% block scripts %}
+    <script src="{% static 'playel/js/script.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+    {{ track.name }}
+{% endblock %}
+
+{% block body %}
+    <header>
+      <h1>{{ track.name }}</h1>
+    </header>
+
+    <section>
+      <h2>Lecteur audio</h2>
+      {% if track.file_ogg != None or track.file_mp3 != None %}
+        <div class="player">
+          <a class="button" id="play" href="">
+            <svg height="300" width="300">
+              <title>Play / pause</title>
+              <desc>Bouton play et pause</desc>
+              <line class="path" id="line1" x1="50" y1="0"   x2="275" y2="150"/>
+              <line class="path" id="line2" x1="50" y1="300" x2="275" y2="150"/>
+            </svg>
+          </a>
+          <canvas id="pbar" width="500" height="10">
+            Votre navigateur ne supporte pas Canevas :(
+          </canvas>
+        </div>
+        <audio id="audioplayer">
+          <source src="{{ track.file_ogg.url }}" type="audio/ogg"/>
+          <source src="{{ track.file_mp3.url }}" type="audio/mpeg"/>
+          Votre navigateur ne supporte pas le contenu audio :(
+        </audio>
+      {% else %}
+        <p>La lecture audio n'est pas disponible pour ce contenu.</p>
+      {% endif %}
+    </section>
+    
+    <section>
+      <h2>Morceau dans {{ albums.count|apnumber|default:"aucun" }} album{{ albums.count|pluralize }}.</h2>
+      <ul>
+        {% for album in albums %}
+          <li><a href="{{ album.get_absolute_url }}">{{ album.name }} ({{ album.pub_date.year }})</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+    
+    <section>  
+      <h2>{{ autors.count|apnumber|default:"aucun"|capfirst }} artiste{{ autors.count|altpluralize }}.</h2>
+      <ul>
+        {% for autor in autors %}
+          <li><a href="{{ autor.get_absolute_url }}">{{ autor.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+    
+    <section>  
+      <h2>{{ genres.count|apnumber|default:"pas de"|capfirst }} genre{{ genres.count|pluralize }}.</h2>
+      <ul>
+        {% for genre in genres %}
+          <li><a href="genre.get_absolute_url }}">{{ genre.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+    
+    <footer>
+      <p>Version expérimentale. Musique, code et design par LeMinaw.<p>
+    </footer>
+{% endblock %}

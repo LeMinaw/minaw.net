@@ -1,0 +1,123 @@
+/* Body */
+
+body {
+  margin: 0px;
+  background-color: #222222;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 1.1rem;
+}
+
+/* Navigation */
+
+nav {
+  max-width: 1300px;
+  margin: auto;
+}
+
+nav ul {
+  display: table;
+  margin: 20px auto;
+}
+
+nav li {
+  display: table-cell;
+}
+
+nav a {
+  padding: 20px 60px;
+}
+
+/* Forms */
+
+form {
+  max-width: 600px;
+  margin: 8px auto;
+  /*width: 100%;*/
+}
+
+textarea, input[type=text], input[type=submit] {
+  width: 100%;
+  max-width: 590px;
+  color: #000000;
+  background-color: #cccccc;
+  font-size: 1.1rem;
+  border: none;
+  font-family: "Courier New", Courier, monospace;
+  margin: 5px auto;
+  padding: 5px 0 5px 5px;
+}
+
+input[type=submit] {
+  max-width: 597px;
+  color: #009922;
+  display: block;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 1.2rem;
+  background-color: #111111;
+  padding: 10px 0;
+  position: relative;
+  right: 3px;
+}
+
+/* Titles */
+
+h1, h2 {
+  color: #dddddd;
+  text-align: center;
+}
+
+h1 {
+  background-color: #060606;
+  padding: 20px 0;
+  font-size: 1.8rem;
+}
+
+h2 {
+  background-color: #111111;
+  padding: 10px 0;
+  font-size: 1.5rem;
+}
+
+/* Paragraphs */
+
+p, label {
+  color: #cccccc;
+  max-width: 600px;
+  margin: auto;
+  text-indent: 50px;
+  text-align: justify;
+}
+
+/* Code */
+
+code{
+  margin: 5px auto;
+  background-color: #cccccc;
+  color: #000000;
+  max-width: 590px;
+  display: block;
+  padding: 5px 10px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Links */
+
+a {
+  color: #0090f0;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+/* Footer */
+
+footer {
+  margin: 40px 0 0 0;
+}
+
+footer p {
+  text-align: center;
+  margin: 10px auto;
+}

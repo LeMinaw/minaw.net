@@ -1,0 +1,38 @@
+{% extends "profs/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    Enseignements
+{% endblock %}
+
+{% block header %}
+    Enseignements
+{% endblock %}
+
+{% block body %}
+    <h2>Liste des modules</h2>
+    <form id="form" class="row" action="{% url 'modules' %}" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="input-field col s12 m4">
+                {{ field.errors }}
+                {{ field }}
+                {{ field.label_tag }}
+            </div>
+        {% endfor %}
+        <noscript>
+            <div class="input-field col s12">
+                <button class="btn waves-effect waves-light" type="submit">Envoyer<i class="material-icons right">send</i></button>
+            </div>
+        </noscript>
+    </form>
+
+    <div class="collection">
+        {% for module in displayedModules %}
+            <a href="{{ module.get_absolute_url }}" class="collection-item">{{ module }}</a>
+        {% empty %}
+            <li class="collection-item">Aucun résultat trouvé. :'(</li>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "playel/base.html" %}
+
+{% load staticfiles %}
+
+{% block scripts %}
+    <script src="{% static 'playel/js/script.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+    Lecture en cours
+{% endblock %}
+
+{% block body %}
+    <header>
+      <h1>Path to nowhere</h1>
+    </header>
+
+    <section>
+      <div class="player">
+        <a class="button" id="play" href="" title="">
+          <svg height="300" width="300">
+            <title>Play / pause</title>
+            <desc>Bouton play et pause</desc>
+            <line class="path" id="line1" x1="50" y1="0"   x2="275" y2="150"/>
+            <line class="path" id="line2" x1="50" y1="300" x2="275" y2="150"/>
+          </svg>
+        </a>
+        <canvas id="pbar" width="500" height="10">
+          Votre navigateur ne supporte pas Canevas :(
+        </canvas>
+      </div>
+    </section>
+
+    <footer>
+      <p>Version expérimentale. Musique, code et design par LeMinaw.<p>
+    </footer>
+
+    <audio id="audioplayer">
+      <source src="{% static 'playel/aud/track.ogg' %}" type="audio/ogg"/>
+      <source src="{% static 'playel/aud/track.mp3' %}" type="audio/mpeg"/>
+      Votre navigateur ne supporte pas le contenu audio :(
+    </audio>
+{% endblock %}

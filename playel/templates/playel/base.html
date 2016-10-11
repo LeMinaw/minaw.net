@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="Author" content="LeMinaw">
+    <meta name="Keywords" content="audio,soundtrack,musique">
+    <meta name="Description" content="Un lecteur de musique.">
+    <link rel="icon" href="favicon.ico" type="icon/png">
+    <link rel="stylesheet" href="{% static 'playel/css/base.css' %}">
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script src="{% static 'playel/js/velocity.min.js' %}"></script>
+    {% block scripts %}{% endblock %}
+    <title>Playel | {% block title %}{% endblock %}</title>
+  </head>
+
+  <body>
+    {% block body %}{% endblock %}
+  </body>
+
+</html>

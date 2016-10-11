@@ -1,0 +1,21 @@
+{% extends "profs/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    À propos
+{% endblock %}
+
+{% block header %}
+    À propos...
+{% endblock %}
+
+{% block body %}
+    <h2>Quelques précisions</h2>
+    <h4>C'est quoi ce site ?</h4>
+    <p class="flow-text">Normalement, tout est expliqué sur la <a href="{% url 'main' %}">page d'acceuil</a>. <br/> C'est un projet personnel, lancé et géré par un étudiant de l'ENSAPLV (c'est moi lol, ça va ?).</p>
+    <h4>Avec quoi tu fais ça ?</h4>
+    <p class="flow-text">Le backend est programmé en Python, à l'aide du framework Django. En plus d'utliser HTML5, CSS3 et JS, le frontend est basé sur le framework MaterializeCSS.</p>
+    <h4>Pour terminer...</h4>
+    <p class="flow-text">Ce site est une version en cours de développement. Si vous trouvez un bug, ou avez une idée d'amélioration, signalez le via l'<a href="{% url 'contact' %}">onglet contact</a>.</p>
+{% endblock %}

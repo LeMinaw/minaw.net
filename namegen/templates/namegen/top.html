@@ -1,0 +1,27 @@
+{% extends "namegen/base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'namegen/css/other.css' %}">
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'namegen/js/like.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+  Top
+{% endblock %}
+
+{% block content %}
+  <h1>Top</h1>
+  <h2>Top 10 des mots les plus appréciés</h2>
+  <ol>
+  {% for result in top %}
+    <li><span class="likes">{{ result.likes }}♥</span> <span class="result" id="{{ result.word }}">{{ result.word }}  <span class="like">♥</span></span></li> 
+  {% empty %}
+    Rien à afficher !
+  {% endfor %}
+  </ol>
+{% endblock %}

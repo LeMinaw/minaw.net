@@ -1,0 +1,43 @@
+{% extends "namegen/base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'namegen/css/main.css' %}">
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'namegen/js/like.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+  Noms
+{% endblock %}
+
+{% block content %}
+  <h1>Générateurs de noms</h1>
+  <h2>Onche, comme c'est quoi ?</h2>
+  <p>Bla bla de présentation de circonstance, <b>huh houh</b> <i>ha ji</i> yoooo !</p>
+  <h2>Paramètres de génération</h2>
+  <form action="{% url "namegen.views.main" %}" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      {{ field }} {{ field.label_tag }}
+      <br>
+      {{ field.errors }}
+    {% endfor %}
+    {{ form.non_field_errors }}
+    <input type="submit" value="Générer !" />
+  </form>
+  {% if results != None %}
+    <h2>Résultat :</h2>
+    <ol>
+      {% for result in results %}
+        <li><span class="result" id="{{ result }}">{{ result }}  <span class="like">♥</span></span></li> 
+      {% empty %}
+        Rien à générer !
+      {% endfor %}
+    </ol>
+    <p>Génération de {{ totalPartsNb }} séquences en {{ deltatime|floatformat:2 }}ms, avec {{ totalRolls }} tirages.</p>
+  {% endif %}
+{% endblock %}

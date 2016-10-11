@@ -1,0 +1,75 @@
+{% extends "playel/base.html" %}
+
+{% load staticfiles     %}
+{% load humanize        %}
+{% load humanize_extras %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block title %}
+    {{ album.name }}
+{% endblock %}
+
+{% block body %}
+    <header>
+        <h1>{{ album.name }}</h1>
+    </header>
+    
+    <section>
+        <h2>{{ trackRels.count|apnumber|default:"pas de"|capfirst }} morceau{{ trackRels.count|pluralize:"x" }} dans l'album.</h2>
+        <ul>
+            {% for trackRel in trackRels %}
+                <li><a href="{{ album.get_absolute_url }}/{{ trackRel.track.slug}}" class="hover">{{ trackRel.track_nb }} - {{ trackRel.track.name }} - {{ trackRel.track.duration }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+    
+    <section>  
+        <h2>{{ autors.count|apnumber|default:"aucun"|capfirst }} artiste{{ autors.count|altpluralize }}.</h2>
+        <ul>
+            {% for autor in autors %}
+                <li><a href="{{ autor.get_absolute_url }}">{{ autor.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+    
+    <section>  
+        <h2>{{ genres.count|apnumber|default:"pas de"|capfirst }} genre{{ genres.count|pluralize }}.</h2>
+        <ul>
+            {% for genre in genres %}
+                <li><a href="{{ genre.get_absolute_url }}">{{ genre.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+    
+    <section>
+        <h2>{{ covers.count|altapnumber|default:"aucune"|capfirst }} couverture{{ covers.count|altpluralize }}.</h2>
+        <ul class="thumblist">
+            {% for cover in covers %}
+                <li class="thumb"><a href="{{ cover.get_absolute_url }}">
+                    <img src="{{ cover.image.url|default:'{% static playel/img/defaultThumb.png %}' }}"/> <!--TODO Needs static delimiter...-->
+                </a></li>
+            {% endfor %}
+        </ul>
+    </section> 
+    
+    <section>
+        <h2>Autres informations</h2>
+        {% if album.pub_date != None %}
+            <p>{{ album.name }} a été publié le {{ album.pub_date }}.</p>
+        {% endif %}
+        <p>{{ album.desc }}</p>
+        <p>
+            Ajouté à la base de données {{ album.added|naturaltime }}.
+            {% if album.added|naturaltime != album.modif|naturaltime %}
+                Dernière modification {{ album.modif|naturaltime}}.
+            {% endif %}
+        </p>
+    </section>
+    
+    <footer>
+        <br/><br/>
+        <p>Version expérimentale. Musique, code et design par LeMinaw.</p>
+    </footer>
+{% endblock %}

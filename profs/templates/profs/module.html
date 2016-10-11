@@ -1,0 +1,65 @@
+{% extends "profs/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    Module
+{% endblock %}
+
+{% block header %}
+    Module
+{% endblock %}
+
+{% block body %}
+    <h2>{{ module }}</h2>
+    <p class="flow-text plvcolor-text">{{ module.semester }} <br/> {{ module.subject }} <br/> {{ module.teacher }}</p>
+
+    <br/>
+    <h4>Contenu du cours</h4>
+    <p class="flow-text">{{ module.content }}</p>
+
+    <br/>
+    <h4>Commentaires d'étudiants</h4>
+    {% for comment in comments %}
+        <div class="card">
+            <div class="card-content">
+                <h5>{{ comment.author }} ({{ comment.year }})</h5>
+                <p class="flow-text"> {{ comment.content }}</p>
+            </div>
+        </div>
+    {% empty %}
+        <p class="flow-text">Aucun commentaire pour le moment. :'(</p>
+    {% endfor %}
+
+    <br/>
+    <h4>Partagez votre expérience !</h4>
+    <div class="card">
+        <div class="card-content">
+            <form class="row" action="{% url 'module' semester=semester.slug subject=subject.slug teacher=teacher.slug %}" method="post">
+                {% csrf_token %}
+                <div class="input-field col s12 m8">
+                    <input id="{{ form.author.id_for_label }}" name="{{ form.author.name }}" type="text" value="{{ form.author.value }}" class=" validate">
+                    <i class="tooltipped grey-text material-icons right" data-position="left" data-delay="50" data-tooltip="{{ form.author.help_text }}">info_outline</i>
+                    {{ form.author.label_tag }}
+                    {{ form.author.errors }}
+                </div>
+
+
+                <div class="input-field col s12 m4">
+                    <input id="{{ form.year.id_for_label }}" name="{{ form.year.name }}" type="number" min="1950" max="2050" value="{{ form.year.value }}" class="validate">
+                    <i class="tooltipped grey-text material-icons right" data-position="left" data-delay="50" data-tooltip="{{ form.year.help_text }}">info_outline</i>
+                    {{ form.year.label_tag }}
+                    {{ form.year.errors }}
+                </div>
+                <div class="input-field col s12">
+                    <textarea id="{{ form.content.id_for_label }}" name="{{ form.content.name }}" class="materialize-textarea validate"></textarea>
+                    {{ form.content.label_tag }}
+                    {{ form.content.errors }}
+                </div>
+                <div class="input-field col s12">
+                    <button class="btn waves-effect waves-light" type="submit">Envoyer<i class="material-icons right">send</i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

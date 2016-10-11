@@ -1,0 +1,47 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="Author" content="LeMinaw">
+    <meta name="Keywords" content="générateur,nom,noms,mot,mots,aléatoire, generator,name,names,prodedural,random">
+    <meta name="Description" content="Un super site web qui génère des noms.">
+    <link rel="icon" href="favicon.ico" type="icon/png">
+    <link rel="stylesheet" href="{% static 'namegen/css/base.css' %}">
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    {% block scripts %}{% endblock %}
+    {% block stylesheet %}{% endblock %}
+    <title>Générateurs | {% block title %}{% endblock %}</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li class="navbaritem">
+            <a href="/namegen/top/">Mots populaires</a>
+          </li>
+          <li class="navbaritem">
+            <a href="/namegen/">Générateur</a>
+          </li>
+          <li class="navbaritem">
+            <a href="/namegen/about/">À propos</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <section id="content">
+      {% block content %}{% endblock %}
+    </section>
+    <footer>
+      <p>Une application web par <a href="">LeMinaw</a>.</p>
+      <p>Licence CC BY-NC-SA 2.0</p>
+      <p>- 2016 -</p>
+    </footer>
+  </body>
+
+</html> 

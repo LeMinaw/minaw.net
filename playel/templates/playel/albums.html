@@ -1,0 +1,37 @@
+{% extends "playel/base.html" %}
+
+{% load staticfiles %}
+{% load humanize    %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block title %}
+Albums
+{% endblock %}
+
+{% block body %}
+    <header>
+      <h1>Albums</h1>
+    </header>
+
+    <section>
+      <h2>{{ albumsNb|apnumber|capfirst }} album{{ albumsNb|pluralize }} recensé{{ albumsNb|pluralize }}.</h2>
+      <ul class="thumblist">
+        {% for album in albums %}
+          <li class="thumb">
+            <a href="/playel/album/{{ album.slug }}">
+              <img src="{{ album.cover.image.url }}"/>
+              <p>{{ album.name }}</p>
+            </a>
+          </li>
+        {% empty %}
+          Aucun album.
+        {% endfor %}
+      </ul>
+    </section>
+
+    <footer>
+      <p>Version expérimentale. Musique, code et design par LeMinaw.<p>
+    </footer>
+{% endblock %}
