@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'dynimg',
     'playel',
     'profs',
+    'perso',
 )
 
 MIDDLEWARE_CLASSES = (

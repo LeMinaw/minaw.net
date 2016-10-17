@@ -2,6 +2,10 @@
 
 This repo contains several personal web projects, mainly using the Django framework.
 
+## Perso
+
+My personal website.
+
 ## DynIMG
 
 Dynamic image generator.

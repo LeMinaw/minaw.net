@@ -1,24 +1,21 @@
-{% extends "profs/base.html" %}
-
+{% extends "perso/base.html" %}
 {% load staticfiles %}
 
 {% block title %}
     Acceuil
 {% endblock %}
 
-{% block header %}
-    Bienvenue.
-{% endblock %}
-
-{% block body %}
-    <h2>Plateforme d'échange</h2>
-    <p class="flow-text">Bienvenue sur la plate forme d'échanges inter-étudiants concernant les enseignements de l'ENSAPLV. <a href="/profs/modules/">Cliquez ici</a> pour commencer.</p>
-    <h4>Super ! Qu'est ce que c'est ?</h2>
-    <p class="flow-text">Ce site permet de consulter les programmes de différents modules d'enseignement, mais aussi de consulter et de lire des retours, des conseils ou des remarques d'étudiants concernants des enseignements particuliers.</p>
-    <p class="flow-text">Vous pouvez bien évidemment y contribuer en faisant simplement part de vos retours.</p>
-    <p class="flow-text">Une des principales vocations de ce site est l'assistance des étudiants dans leurs choix des modules d'enseignement.</p>
-    <h4>C'est parti ! Gardez toutefois à l'esprit...</h3>
-    <p class="flow-text">...que rien ne vaut le rapport humain : ce site n'est pas là pour remplacer les conversations que vous pourriez avoir avec des étudiants.</p>
-    <p class="flow-text">...que ce site n'est pas officiel : c'est un travai personnel, aucunement rattaché à l'ENSAPLV.</p>
-    <p class="flow-text">...qu'il est inutile de prendre ça trop à coeur : le tirage au sort est quand même très aléatoire !</p>
+{% block content %}
+    <div class="content">
+        <h1>MINAW.net</h1>
+        <img class= "logo" src="{% static 'perso/img/logo.svg' %}" onerror="this.src={% static 'perso/img/logo.png' %}">
+        <p>Bienvenue sur mon super site. Bon en fait, il n'y a rien pour le moment, mais promis, j'y travaille.</p>
+        <p>En attendant, voici des liens vers mes autres projets sur les Internets Virtuels 2.0 :</p>
+        <ul>
+            <li><a href="/profs">Enseignements ENSAPLV</a> - Partage d'avis sur les profs de l'ENSA</li>
+            <li><a href="/dynimg">DynIMG</a> - Générateur d'images dynamiques</li>
+            <li><a href="/namegen">NameGen</a> - Générateur de noms pseudo aléatoire</li>
+        </ul>
+        <p>À plus.</p>
+    </div>
 {% endblock %}
