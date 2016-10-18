@@ -16,6 +16,9 @@ media/
 *.sqlite3
 *.old
 
+# Security secrets
+settings-prod.py
+
 # PyInstaller
 *.manifest
 
