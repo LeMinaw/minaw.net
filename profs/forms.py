@@ -12,9 +12,9 @@ class AddCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['content', 'author', 'year']
-        labels     = {'author': 'Nom ou pseudo',                         'year': 'Année',                          'content': 'Entrez votre message ici...'}
-        help_texts = {'author': 'Vous pouvez aussi laisser anonyme ;-)', 'year': "Quand avez vous eu ce module ?"}
-    
+        labels     = {'author': "Nom ou pseudo",                          'year': "Année",                          'content': "Entrez votre message ici..."}
+        help_texts = {'author': "C'est pas forcément votre vrai nom ;-)", 'year': "Quand avez vous eu ce module ?"}
+
     def __init__(self, *args, **kwargs):
         kwargs.setdefault("label_suffix", "") # Removes label suffixes for all fields
         super(AddCommentForm, self).__init__(*args, **kwargs)

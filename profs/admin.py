@@ -15,6 +15,7 @@ class ModuleAdmin(admin.ModelAdmin):
     date_hierarchy = 'added'
     ordering       = ('added',)
     search_fields  = ('content',)
+    save_as = True
 
 
 class SemesterAdmin(admin.ModelAdmin):
@@ -23,6 +24,7 @@ class SemesterAdmin(admin.ModelAdmin):
     date_hierarchy = 'added'
     ordering       = ('added',)
     search_fields  = ('name',)
+    save_as = True
 
 
 class SubjectAdmin(admin.ModelAdmin):

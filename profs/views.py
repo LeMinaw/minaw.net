@@ -40,7 +40,7 @@ def modules(request):
                 for module in hiddenModules:
                     xmlResponse.hide(".collection > a[href=\"" + module.get_absolute_url() + "\"]")
 
-                for isemester in Semester.objects.all():
+                for isemester in Semester.objects.all(): # TODO: Factorisation
                     result = Module.objects.filter(semester=isemester, subject__in=subject, teacher__in=teacher).exists()
                     xmlResponse.disable("#id_semester > [value=\"" + str(isemester.id) + "\"]", not result)
 
@@ -76,6 +76,7 @@ def module(request, semester, subject, teacher):
             new_comment = form.save(commit=False) # form is a ModelForm
             new_comment.module = module
             new_comment.save()
+            thanks = createThanks()
     else:
         form = AddCommentForm()
 

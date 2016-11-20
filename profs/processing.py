@@ -1,6 +1,16 @@
 #-*- coding: utf-8 -*-
 
 import xml.dom.minidom as dom
+from random import choice
+
+def createThanks():
+    messages = ["Le monde est un peu meilleur maintenant.",
+                "En récompense, prends ce cookie magic bogoss.",
+                "Bisou sur la joue <3",
+                "Ça nous aide à sauver les lamas du Nicaragua.",
+                "C'est bien aimable de ta part."]
+    return choice(messages)
+
 
 class Taconite(dom.Document):
     """Useful class for generating XML Taconite JQuery content.

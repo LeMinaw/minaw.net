@@ -27,6 +27,7 @@ class Module(MainModel):
 
     class Meta:
         verbose_name = "module"
+        ordering = ['semester', 'subject', 'teacher']
 
 
 class Semester(MainModel):
@@ -63,6 +64,7 @@ class Teacher(MainModel):
 
     class Meta:
         verbose_name = "enseignant"
+        ordering = ['slug']
 
 
 class Comment(MainModel):

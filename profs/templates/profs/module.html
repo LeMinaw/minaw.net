@@ -62,4 +62,18 @@
             </form>
         </div>
     </div>
+
+    {% if thanks != None %}
+        <div id="thanks" class="modal">
+            <div class="modal-content">
+                <h4>Merci pour ce retour !</h4>
+                <p>{{ thanks }}</p>
+            </div>
+            <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect btn-flat">C'était un plaisir.</a>
+            </div>
+        </div>
+    {% endif %}
+
+
 {% endblock %}
