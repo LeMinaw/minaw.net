@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $.taconite.debug = true;
+    $.taconite.debug = false;
 
     $("select").material_select();
     $(".button-collapse").sideNav();

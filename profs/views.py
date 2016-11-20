@@ -21,31 +21,36 @@ def contact(request):
 
 # @vary_on_headers('HTTP_X_REQUESTED_WITH') # Needed when using caching
 def modules(request):
-    semester, subject, teacher = None, None, None
     displayedModules = Module.objects.all()
 
     if request.method == "POST":
         form = ModulesForm(request.POST)
         if form.is_valid():
-            semester = form.cleaned_data['semester']
-            subject  = form.cleaned_data['subject']
-            teacher  = form.cleaned_data['teacher']
-            if semester != None:
-                displayedModules = displayedModules.filter(semester=semester)
-            if subject != None:
-                displayedModules = displayedModules.filter(subject=subject)
-            if teacher != None:
-                displayedModules = displayedModules.filter(teacher=teacher)
+            semester = Semester.objects.filter(name=form.cleaned_data['semester']) or Semester.objects.all()
+            subject  = Subject.objects.filter(name=form.cleaned_data['subject']) or Subject.objects.all()
+            teacher  = Teacher.objects.filter(name=form.cleaned_data['teacher'])  or Teacher.objects.all()
+
+            displayedModules = displayedModules.filter(semester__in=semester, subject__in=subject, teacher__in=teacher)
 
             if request.is_ajax():
                 xmlResponse = Taconite()
 
-                xmlResponse.addClass("disabled", "#id_semester > [value=\"4\"]")
-
                 xmlResponse.show(".collection > a")
                 hiddenModules = Module.objects.exclude(id__in=displayedModules)
-                for item in hiddenModules:
-                    xmlResponse.hide(".collection > a[href=\"" + item.get_absolute_url() + "\"]")
+                for module in hiddenModules:
+                    xmlResponse.hide(".collection > a[href=\"" + module.get_absolute_url() + "\"]")
+
+                for isemester in Semester.objects.all():
+                    result = Module.objects.filter(semester=isemester, subject__in=subject, teacher__in=teacher).exists()
+                    xmlResponse.disable("#id_semester > [value=\"" + str(isemester.id) + "\"]", not result)
+
+                for isubject in Subject.objects.all():
+                    result = Module.objects.filter(semester__in=semester, subject=isubject, teacher__in=teacher).exists()
+                    xmlResponse.disable("#id_subject > [value=\"" + str(isubject.id) + "\"]", not result)
+
+                for iteacher in Teacher.objects.all():
+                    result = Module.objects.filter(semester__in=semester, subject__in=subject, teacher=iteacher).exists()
+                    xmlResponse.disable("#id_teacher > [value=\"" + str(iteacher.id) + "\"]", not result)
 
                 xmlResponse.js("$(\"select\").material_select();")
 

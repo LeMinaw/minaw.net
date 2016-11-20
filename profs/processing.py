@@ -106,3 +106,9 @@ class Taconite(dom.Document):
         command.setAttribute("name", self.camelizeCssProperty(property))
         command.setAttribute("value", value)
         self.childNodes[0].appendChild(command)
+
+    def disable(self, selector, value):
+        if value:
+            self.js("$('" + selector + "').prop('disabled', true);")
+        else:
+            self.js("$('" + selector + "').prop('disabled', false);")
