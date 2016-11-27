@@ -15,9 +15,9 @@ class MainModel(models.Model):
 
 class Module(MainModel):
     content      = models.TextField      (blank=True, verbose_name="contenu")
-    semester     = models.ForeignKey     ('Semester', verbose_name="semestre")
-    subject      = models.ForeignKey     ('Subject',  verbose_name="matière")
-    teacher      = models.ForeignKey     ('Teacher',  verbose_name="enseignant")
+    semester     = models.ForeignKey     ('Semester', verbose_name="semestre", db_index=True)
+    subject      = models.ForeignKey     ('Subject',  verbose_name="matière", db_index=True)
+    teacher      = models.ForeignKey     ('Teacher',  verbose_name="enseignant", db_index=True)
 
     def __unicode__(self):
         return self.semester.short + ' - ' + self.subject.short + ' - ' + self.teacher.short
