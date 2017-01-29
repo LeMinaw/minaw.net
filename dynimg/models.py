@@ -16,7 +16,7 @@ class ImageUrl(models.Model):
     dwnlTime   = models.DurationField("Average download time", null=True,        blank=True )
     created    = models.DateField    (                         auto_now_add=True            )
     last_used  = models.DateField    (                         auto_now=True,    blank=True )
-    times_used = models.IntegerField (                                           default=0  ) 
+    times_used = models.IntegerField (                                           default=0  )
     def __str__(self):
         return self.url
 

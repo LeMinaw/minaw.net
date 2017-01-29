@@ -1,7 +1,6 @@
 #-*- coding: utf-8 -*-
 
 from django.db                import models
-#from .                        import fields
 from django.core.urlresolvers import reverse
 
 
@@ -19,7 +18,7 @@ class Module(MainModel):
     subject      = models.ForeignKey     ('Subject',  verbose_name="matière")
     teacher      = models.ForeignKey     ('Teacher',  verbose_name="enseignant")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.semester.short + ' - ' + self.subject.short + ' - ' + self.teacher.short
 
     def get_absolute_url(self):
@@ -38,7 +37,7 @@ class Semester(MainModel):
     short = models.CharField(max_length=4,  verbose_name="nom abrégé")
     slug  = models.SlugField(               verbose_name="slug")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     class Meta:
@@ -50,7 +49,7 @@ class Subject(MainModel):
     short = models.CharField(max_length=16, verbose_name="nom abrégé")
     slug  = models.SlugField(               verbose_name="slug")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     class Meta:
@@ -62,7 +61,7 @@ class Teacher(MainModel):
     short = models.CharField(max_length=16, verbose_name="nom abrégé")
     slug  = models.SlugField(               verbose_name="slug")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     class Meta:
@@ -77,7 +76,7 @@ class Comment(MainModel):
     validated = models.BooleanField             (                                default=False, verbose_name="validé")
     year      = models.PositiveSmallIntegerField(                                default=2016,  verbose_name="année") #TODO ranged YearField implementation
 
-    def __unicode__(self):
+    def __str__(self):
         return str(self.module) + ' - ' + str(self.id)
 
     class Meta:

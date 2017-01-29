@@ -24,7 +24,7 @@
         <div class="card">
             <div class="card-content">
                 <h5>{{ comment.author }} ({{ comment.year }})</h5>
-                <p class="flow-text"> {{ comment.content }}</p>
+                <p class="flow-text"> {{ comment.content|linebreaksbr }}</p>
             </div>
         </div>
     {% empty %}

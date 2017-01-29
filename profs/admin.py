@@ -10,7 +10,7 @@ class ModuleAdmin(admin.ModelAdmin):
         else:
             return module.content
 
-    list_display   = ('__unicode__', 'short_content', 'added', 'modif')
+    list_display   = ('__str__', 'short_content', 'added', 'modif')
     list_filter    = ('semester', 'subject', 'teacher')
     date_hierarchy = 'added'
     ordering       = ('added',)
@@ -19,7 +19,7 @@ class ModuleAdmin(admin.ModelAdmin):
 
 
 class SemesterAdmin(admin.ModelAdmin):
-    list_display   = ('__unicode__', 'slug', 'name', 'short', 'added', 'modif')
+    list_display   = ('__str__', 'slug', 'name', 'short', 'added', 'modif')
   # list_filter    = ()
     date_hierarchy = 'added'
     ordering       = ('added',)
@@ -28,7 +28,7 @@ class SemesterAdmin(admin.ModelAdmin):
 
 
 class SubjectAdmin(admin.ModelAdmin):
-    list_display   = ('__unicode__', 'slug', 'name', 'short', 'added', 'modif')
+    list_display   = ('__str__', 'slug', 'name', 'short', 'added', 'modif')
   # list_filter    = ()
     date_hierarchy = 'added'
     ordering       = ('added',)
@@ -36,7 +36,7 @@ class SubjectAdmin(admin.ModelAdmin):
 
 
 class TeacherAdmin(admin.ModelAdmin):
-    list_display   = ('__unicode__', 'slug', 'name', 'short', 'added', 'modif')
+    list_display   = ('__str__', 'slug', 'name', 'short', 'added', 'modif')
   # list_filter    = ()
     date_hierarchy = 'added'
     ordering       = ('added',)
@@ -53,7 +53,7 @@ class CommentAdmin(admin.ModelAdmin):
         else:
             return module.content
 
-    list_display   = ('__unicode__', 'validated', 'author', 'short_content', 'added', 'modif')
+    list_display   = ('__str__', 'validated', 'author', 'short_content', 'added', 'modif')
     list_filter    = ('module',)
     date_hierarchy = 'added'
     ordering       = ('-validated', 'added')

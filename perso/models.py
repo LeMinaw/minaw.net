@@ -12,7 +12,7 @@ class Publication(models.Model):
     categs  = models.ManyToManyField('Category')
     tags    = models.ManyToManyField('Tag')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def get_absolute_url(self):
@@ -27,7 +27,7 @@ class Category(models.Model):
     name  = models.CharField(max_length=64, verbose_name="nom")
     slug  = models.SlugField(               verbose_name="slug")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def get_absolute_url(self):
@@ -41,7 +41,7 @@ class Tag(models.Model):
     name  = models.CharField(max_length=16, verbose_name="nom")
     slug  = models.SlugField(               verbose_name="slug")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def get_absolute_url(self):
