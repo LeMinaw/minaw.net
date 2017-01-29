@@ -3,6 +3,11 @@
   src: url("/static/perso/fnt/Cella.ttf");
 }
 
+@font-face {
+  font-family: "OCR";
+  src: url("/static/perso/fnt/OCR.ttf");
+}
+
 /* Arrière plan */
 
 body {
@@ -51,7 +56,7 @@ header {
   color: #ffffff;
   text-decoration: none;
   transition: all .3s;
-  font-family: "Cella", Courier, monospace;
+  font-family: "OCR", Courier, monospace;
   font-size: 17px;
 }
 
@@ -91,7 +96,7 @@ header {
 
 h1 {
   font-family: "Cella", Courier, monospace;
-  font-size: 70px;
+  font-size: 85px;
   text-align: center;
   margin: 20px;
 }
@@ -132,6 +137,6 @@ footer {
 footer p {
   text-align: center;
   font-size: 16px;
-  font-family: "Cella", Courier, monospace;
+  font-family: "OCR", Courier, monospace;
   color: #ffffff;
 }
