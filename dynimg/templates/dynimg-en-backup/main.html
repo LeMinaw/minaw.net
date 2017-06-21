@@ -1,0 +1,45 @@
+{% extends "dynimg/base.html" %}
+
+{% load staticfiles %}
+
+<!-- {% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'dynimg/css/main.css' %}">
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'dynimg/js/script.js' %}"></script>
+{% endblock %} -->
+
+{% block title %}
+  Home
+{% endblock %}
+
+{% block content %}
+  <h1>DynImg, a dynamic image generator</h1>
+  <h2>What is it about ?</h2>
+  <p>DynImg allows you to link several images to a unique URL. When the URL is accessed, a random image is picked from the list you provided.</p>
+  <p>It can be useful for making a changing website banner easily, or for displaying various declinations of a user signature or avatar on a forum.</p>
+  <p style="color: red"><b>IMPORTANT NOTICE:</b> For now, shadow copy works only with dropbox shared links ending by "dl=1", due to host limitations.</p>
+  {% if image_id == None %}
+    <h2>Create you new dynamic image right now!</h2>
+    <p>Simply follow the steps below.</p>
+    <form action="{% url "dynimg:main" %}" method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        {{ field.label_tag }}
+        <br>
+        {{ field }}
+        <br>
+        {{ field.errors }}
+      {% endfor %}
+      {{ form.non_field_errors }}
+      <input type="submit" value="Let's go!" />
+    </form>
+  {% endif %}
+  {% if image_id != None %}
+    <h2>Success !</h2>
+    <p>Here's the link to your new dynamic image. Simply use it as a regular image link.</p>
+    <code>http://{{ host }}/dynimg/i/{{ image_id }}</code>
+    <p>Thank you !</p>
+  {% endif %}
+{% endblock %}

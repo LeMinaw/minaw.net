@@ -19,7 +19,7 @@
   <h2>Onche, comme c'est quoi ?</h2>
   <p>Bla bla de présentation de circonstance, <b>huh houh</b> <i>ha ji</i> yoooo !</p>
   <h2>Paramètres de génération</h2>
-  <form action="{% url "namegen.views.main" %}" method="post">
+  <form action="{% url "namegen:main" %}" method="post">
     {% csrf_token %}
     {% for field in form %}
       {{ field }} {{ field.label_tag }}
@@ -33,7 +33,7 @@
     <h2>Résultat :</h2>
     <ol>
       {% for result in results %}
-        <li><span class="result" id="{{ result }}">{{ result }}  <span class="like">♥</span></span></li> 
+        <li><span class="result" id="{{ result }}">{{ result }}  <span class="like">♥</span></span></li>
       {% empty %}
         Rien à générer !
       {% endfor %}

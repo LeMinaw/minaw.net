@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 
-from django.db                import models
-from django.core.urlresolvers import reverse
+from django.db   import models
+from django.urls import reverse
 
 
 class MainModel(models.Model):
@@ -19,17 +19,17 @@ class MainModel(models.Model):
 
 
 class Track(MainModel):
-    autors     = models.ManyToManyField           ('Autor', blank=True                                  , verbose_name="Auteurs")
-    genres     = models.ManyToManyField           ('Genre', blank=True                                  )
-    cover      = models.ForeignKey                ('Cover', blank=True, null=True                       , verbose_name="Couverture")
-    pub_date   = models.DateField                 (         blank=True, null=True                       , verbose_name="Date de publication")
-    aux_covers = models.ManyToManyField           ('Cover', blank=True, related_name='track.aux_covers+', verbose_name="Couvertures auxilliaires")
-    inh_album  = models.ForeignKey                ('Album', blank=True, null=True                       , verbose_name="Hériter des attributs de l'album")
-    file_ogg   = models.FileField                 (         blank=True, upload_to='tracks/mp3'          , verbose_name="Fichier OGG")
-    file_mp3   = models.FileField                 (         blank=True, upload_to='tracks/ogg'          , verbose_name="Fichier MP3")
-    duration   = models.DurationField             (         blank=True, null=True                       , verbose_name="Durée")
-    bpm        = models.PositiveSmallIntegerField (         blank=True, null=True                       , verbose_name="BPM")
-    plays_nb   = models.PositiveSmallIntegerField (                     default=0                       , verbose_name="Nombre de lectures")
+    autors     = models.ManyToManyField           ('Autor', blank=True                                      , verbose_name="Auteurs")
+    genres     = models.ManyToManyField           ('Genre', blank=True                                      )
+    cover      = models.ForeignKey                ('Cover', blank=True, null=True, on_delete=models.SET_NULL, verbose_name="Couverture")
+    pub_date   = models.DateField                 (         blank=True, null=True                           , verbose_name="Date de publication")
+    aux_covers = models.ManyToManyField           ('Cover', blank=True, related_name='track.aux_covers+'    , verbose_name="Couvertures auxilliaires")
+    inh_album  = models.ForeignKey                ('Album', blank=True, null=True, on_delete=models.SET_NULL, verbose_name="Hériter des attributs de l'album")
+    file_ogg   = models.FileField                 (         blank=True, upload_to='tracks/mp3'              , verbose_name="Fichier OGG")
+    file_mp3   = models.FileField                 (         blank=True, upload_to='tracks/ogg'              , verbose_name="Fichier MP3")
+    duration   = models.DurationField             (         blank=True, null=True                           , verbose_name="Durée")
+    bpm        = models.PositiveSmallIntegerField (         blank=True, null=True                           , verbose_name="BPM")
+    plays_nb   = models.PositiveSmallIntegerField (                     default=0                           , verbose_name="Nombre de lectures")
 
     def iautors(self):
         '''Returns a QuerySet of autors, considering inheritance.'''
@@ -69,12 +69,12 @@ class Track(MainModel):
 
 
 class Album(MainModel):
-    tracks     = models.ManyToManyField ('Track', blank=True, through='TrackAlbumRelation'    , verbose_name="Pistes")
-    genres     = models.ManyToManyField ('Genre', blank=True                                  )
-    autors     = models.ManyToManyField ('Autor', blank=True                                  , verbose_name="Auteurs")
-    cover      = models.ForeignKey      ('Cover', blank=True, null=True                       , verbose_name="Couverture")
-    aux_covers = models.ManyToManyField ('Cover', blank=True, related_name='album.aux_covers+', verbose_name="Couvertures auxilliaires")
-    pub_date   = models.DateField       (         blank=True, null=True                       , verbose_name="Date de publication")
+    tracks     = models.ManyToManyField ('Track', blank=True, through='TrackAlbumRelation'        , verbose_name="Pistes")
+    genres     = models.ManyToManyField ('Genre', blank=True                                      )
+    autors     = models.ManyToManyField ('Autor', blank=True                                      , verbose_name="Auteurs")
+    cover      = models.ForeignKey      ('Cover', blank=True, null=True, on_delete=models.SET_NULL, verbose_name="Couverture")
+    aux_covers = models.ManyToManyField ('Cover', blank=True, related_name='album.aux_covers+'    , verbose_name="Couvertures auxilliaires")
+    pub_date   = models.DateField       (         blank=True, null=True                           , verbose_name="Date de publication")
 
     def plays_nb(self):
         '''Sums plays number of all the tracks the album contains.'''
@@ -142,9 +142,9 @@ class CoverAutor(MainModel):
 
 
 class TrackAlbumRelation(models.Model):
-    track    = models.ForeignKey                ('Track'  , verbose_name="Piste")
-    album    = models.ForeignKey                ('Album'  )
-    track_nb = models.PositiveSmallIntegerField (default=1, verbose_name="Numéro de piste")
+    track    = models.ForeignKey                ('Track', on_delete=models.CASCADE, verbose_name="Piste")
+    album    = models.ForeignKey                ('Album', on_delete=models.CASCADE)
+    track_nb = models.PositiveSmallIntegerField (         default=1               , verbose_name="Numéro de piste")
 
     def __str__(self):
         return self.track.name + ' dans ' + self.album.name

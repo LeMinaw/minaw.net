@@ -3,6 +3,7 @@
 from django.conf.urls import url
 from . import views
 
+app_name = "perso"
 urlpatterns = [
     url(r'^$',                                       views.main,        name='main'),
     url(r'^publication/(?P<slug>[-a-zA-Z0-9_]+)/?$', views.publication, name='publication'),

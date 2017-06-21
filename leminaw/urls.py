@@ -6,8 +6,8 @@ from django.conf.urls.static import static
 from django.contrib          import admin
 
 urlpatterns = [
-    url(r'^$',        include("perso.urls")),
-    url(r'^admin/',   include(admin.site.urls)),
+    url(r'^admin/',   admin.site.urls),
+    url(r'^',         include("perso.urls")),
     url(r'^namegen/', include("namegen.urls")),
     url(r'^dynimg/',  include("dynimg.urls")),
     url(r'^playel/',  include("playel.urls")),

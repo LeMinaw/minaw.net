@@ -1,0 +1,36 @@
+{% extends "dynimg/base.html" %}
+
+{% load staticfiles %}
+
+<!-- {% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'namegen/css/about.css' %}">
+{% endblock %} -->
+
+{% block title %}
+  About
+{% endblock %}
+
+{% block content %}
+  <h1>About</h1>
+  <h2>What is DynImg ?</h2>
+  <p>DynImg is a free service allowing you to adress several pictures thru a unique web link. When the link is loaded (eg. by another website, blog, forum...), a random picture is randomly picked from the list you provided.</p>
+  <p>It can be useful for making a "slideshow" website banner easily, or for displaying various declinations of a user signature or avatar on a forum.</p>
+  
+  <h2>How does it works?</h2>
+  <p>Go to <a href="/dynimg/">the main page</a>, fill the text box with links to your static pictures, and click <i>Let's go!</i>. The website will return a web adress that you can use as usual, on forums, chats, or in your web designs. No need of any account, email adress or anything.</p>
+  
+  <h2>Is DynImg an image host?</h2>
+  <p>Not at all ! DynImg is just making the link between your unique dynamic image adress and your statics images links. You have to host your pictures on a specialised website by your side. <!-- <a href="http://postimage.org/">Postimage.org</a> is a totally valid option.</p> -->
+  
+  <h2>What the hell is shadow copy mode?</h2>
+  <p>Usually, DynImg works great in default mode. In default mode, When your dynamic image URL is loaded, DynImg simply does a HTTP redirection to one of your links.</p>
+  <p>But sometimes, you may need a more "strong" or "hidden" way. In shadow copy mode, DynImg will internally copy the data from your images at runtime, to return it without any redirection. It's slower and less efficient, but there are few cases when this is handy.</p>
+  <p style="color: red"><b>IMPORTANT NOTICE:</b> For now, shadow copy mode works only with dropbox shared links ending by "dl=1", due to host limitations.</p>
+  
+  <h2>Statistics</h2>
+  <p>We have {{ registeredImgs }} dynamic images registered, using {{ registeredUrls }} registered URLs.</p>
+  <p>{{ displayedImgs }} dynamic images were displayed, taking {{ processingTime }} to generate.</p>
+  
+  <h2>Powered by</h2>
+  <p>Python | Django | MySQL | PythonAnywhere | HTML5 | CSS3</p>
+{% endblock %}

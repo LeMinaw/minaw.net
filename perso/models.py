@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 
-from django.db                import models
-from django.core.urlresolvers import reverse
+from django.db   import models
+from django.urls import reverse
 
 class Publication(models.Model):
     added   = models.DateTimeField(auto_now_add=True, verbose_name="ajouté")

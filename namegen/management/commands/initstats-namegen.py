@@ -7,7 +7,7 @@ from datetime import timedelta
 class Command(BaseCommand):
     help = "Initialises or reinitialises statistics in the DB."
     def handle(self, *args, **options):
-        confirm = raw_input("Type 'confirm' to initialise statistics. Warning : It can not be undone ! ")
+        confirm = input("Type 'confirm' to initialise statistics. Warning : It can not be undone ! ")
         if confirm == "confirm":
             try:
                 stats = Stats.objects.get(id=1)
@@ -21,4 +21,3 @@ class Command(BaseCommand):
             self.stdout.write("Statistics initialised.")
         else:
             raise CommandError("Cancelled.")
-

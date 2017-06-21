@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 
-from django.db                import models
-from django.core.urlresolvers import reverse
+from django.db   import models
+from django.urls import reverse
 
 
 class MainModel(models.Model):
@@ -13,10 +13,10 @@ class MainModel(models.Model):
 
 
 class Module(MainModel):
-    content      = models.TextField      (blank=True, verbose_name="contenu")
-    semester     = models.ForeignKey     ('Semester', verbose_name="semestre")
-    subject      = models.ForeignKey     ('Subject',  verbose_name="matière")
-    teacher      = models.ForeignKey     ('Teacher',  verbose_name="enseignant")
+    content      = models.TextField      (            blank=True              , verbose_name="contenu")
+    semester     = models.ForeignKey     ('Semester', on_delete=models.CASCADE, verbose_name="semestre")
+    subject      = models.ForeignKey     ('Subject',  on_delete=models.CASCADE, verbose_name="matière")
+    teacher      = models.ForeignKey     ('Teacher',  on_delete=models.CASCADE, verbose_name="enseignant")
 
     def __str__(self):
         return self.semester.short + ' - ' + self.subject.short + ' - ' + self.teacher.short
@@ -70,11 +70,11 @@ class Teacher(MainModel):
 
 
 class Comment(MainModel):
-    module    = models.ForeignKey               ('Module', related_name='comments',             verbose_name="module")
-    content   = models.TextField                (                                               verbose_name="contenu")
-    author    = models.CharField                (max_length=32,                  default='',    verbose_name="auteur")
-    validated = models.BooleanField             (                                default=False, verbose_name="validé")
-    year      = models.PositiveSmallIntegerField(                                default=2016,  verbose_name="année") #TODO ranged YearField implementation
+    module    = models.ForeignKey               ('Module', related_name='comments', on_delete=models.CASCADE, verbose_name="module")
+    content   = models.TextField                (                                                             verbose_name="contenu")
+    author    = models.CharField                (max_length=32,                  default='',                  verbose_name="auteur")
+    validated = models.BooleanField             (                                default=False,               verbose_name="validé")
+    year      = models.PositiveSmallIntegerField(                                default=2016,                verbose_name="année") #TODO ranged YearField implementation
 
     def __str__(self):
         return str(self.module) + ' - ' + str(self.id)
