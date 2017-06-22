@@ -13,7 +13,8 @@ class MainModel(models.Model):
 
 
 class Module(MainModel):
-    content      = models.TextField      (            blank=True              , verbose_name="contenu")
+    content      = models.TextField      (            blank=True,               verbose_name="contenu")
+    active       = models.BooleanField   (            default=True,             verbose_name="actif")
     semester     = models.ForeignKey     ('Semester', on_delete=models.CASCADE, verbose_name="semestre")
     subject      = models.ForeignKey     ('Subject',  on_delete=models.CASCADE, verbose_name="matière")
     teacher      = models.ForeignKey     ('Teacher',  on_delete=models.CASCADE, verbose_name="enseignant")
@@ -78,6 +79,9 @@ class Comment(MainModel):
 
     def __str__(self):
         return str(self.module) + ' - ' + str(self.id)
+
+    def get_absolute_url(self):
+        return self.module.get_absolute_url()
 
     class Meta:
         verbose_name        = "avis"

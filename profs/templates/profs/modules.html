@@ -30,7 +30,11 @@
 
     <div class="collection">
         {% for module in displayedModules %}
-            <a href="{{ module.get_absolute_url }}" class="collection-item">{{ module }}</a>
+            <a href="{{ module.get_absolute_url }}" class="collection-item">{{ module }}
+              {% if not module.active %}
+                <span class="new badge" data-badge-caption="Archivé"></span>
+              {% endif %}
+            </a>
         {% empty %}
             <li class="collection-item">Aucun résultat trouvé. :'(</li>
         {% endfor %}

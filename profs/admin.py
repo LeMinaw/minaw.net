@@ -11,7 +11,7 @@ class ModuleAdmin(admin.ModelAdmin):
             return module.content
 
     list_display   = ('__str__', 'short_content', 'added', 'modif')
-    list_filter    = ('semester', 'subject', 'teacher')
+    list_filter    = ('semester', 'subject', 'teacher', 'active')
     date_hierarchy = 'added'
     ordering       = ('added',)
     search_fields  = ('content',)

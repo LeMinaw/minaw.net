@@ -31,7 +31,7 @@ class Taconite(dom.Document):
         self.appendChild(taconite)
 
     def __str__(self):
-        return self.toxml(encoding="utf-8")
+        return self.toxml()
 
     def camelizeCssProperty(self, property):
         words = property.split('-')
