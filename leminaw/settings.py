@@ -7,6 +7,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+import sys
+path = '/home/leminaw/leminaw/leminaw'
+if path not in sys.path:
+    sys.path.append(path)
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 import os
@@ -119,3 +125,8 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+try:
+    from settingsprod import *
+except ImportError:
+    print("No production settings found, using dev settings.")
