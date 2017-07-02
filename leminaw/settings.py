@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'playel',
     'profs',
     'perso',
+    'avatar'
 )
 
 MIDDLEWARE = (

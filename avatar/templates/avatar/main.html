@@ -1,0 +1,24 @@
+{% extends "avatar/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+  Accueil
+{% endblock %}
+
+{% block content %}
+  <h2>Qu'est-ce que c'est ?</h2>
+  <p>Un générateur procédural d'avatars aléatoires. Il calcule un avatar déterminé en fonction d'une donnée d'entrée.</p>
+  <h2>Démonstration</h2>
+  <p>Saisissez un email, un pseudo, un nom...</p>
+  <form action="{% url "avatar:main" %}" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      {{ field }}
+      {{ field.errors }}
+    {% endfor %}
+    {{ form.non_field_errors }}
+    <input type="submit" value="Générer" />
+  </form>
+  <img id="textImg" src="{{ avatarUrl }}"></img>
+{% endblock %}

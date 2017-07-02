@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^dynimg/',  include("dynimg.urls")),
     url(r'^playel/',  include("playel.urls")),
     url(r'^profs/',   include("profs.urls")),
+    url(r'^avatar/',  include("avatar.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

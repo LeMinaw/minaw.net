@@ -12,7 +12,7 @@
 
 {% block body %}
     <h2>Liste des modules</h2>
-    <form id="form" class="row" action="{% url 'modules' %}" method="post">
+    <form id="form" class="row" action="{% url 'profs:modules' %}" method="post">
         {% csrf_token %}
         {% for field in form %}
             <div class="input-field col s12 m4">

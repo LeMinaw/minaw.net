@@ -3,6 +3,7 @@
 from django.conf.urls import url
 from . import views
 
+app_name = "profs"
 urlpatterns = [
     url(r'^$', views.main, name='main'),
     url(r'^about/?$', views.about, name='about'),

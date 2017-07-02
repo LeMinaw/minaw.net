@@ -23,7 +23,7 @@ class Module(MainModel):
         return self.semester.short + ' - ' + self.subject.short + ' - ' + self.teacher.short
 
     def get_absolute_url(self):
-        return reverse('module', kwargs={'semester': self.semester.slug, 'subject': self.subject.slug, 'teacher':self.teacher.slug})
+        return reverse('profs:module', kwargs={'semester': self.semester.slug, 'subject': self.subject.slug, 'teacher':self.teacher.slug})
 
     class Meta:
         verbose_name = "module"

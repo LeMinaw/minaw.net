@@ -35,7 +35,7 @@
     <h4>Partagez votre expérience !</h4>
     <div class="card">
         <div class="card-content">
-            <form class="row" action="{% url 'module' semester=semester.slug subject=subject.slug teacher=teacher.slug %}" method="post">
+            <form class="row" action="{% url 'profs:module' semester=semester.slug subject=subject.slug teacher=teacher.slug %}" method="post">
                 {% csrf_token %}
                 <div class="input-field col s12 m8">
                     <input id="{{ form.author.id_for_label }}" name="{{ form.author.name }}" type="text" value="{{ form.author.value }}" class=" validate">
