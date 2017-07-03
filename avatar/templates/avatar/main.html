@@ -11,7 +11,7 @@
   <p>Un générateur procédural d'avatars aléatoires. Il calcule un avatar déterminé en fonction d'une donnée d'entrée.</p>
   <h2>Démonstration</h2>
   <p>Saisissez un email, un pseudo, un nom...</p>
-  <form action="{% url "avatar:main" %}" method="post">
+  <form id="testForm" action="{% url "avatar:main" %}" method="post">
     {% csrf_token %}
     {% for field in form %}
       {{ field }}
@@ -20,5 +20,5 @@
     {{ form.non_field_errors }}
     <input type="submit" value="Générer" />
   </form>
-  <img id="textImg" src="{{ avatarUrl }}"></img>
+  <img id="testImg" src="{{ avatarUrl }}"></img>
 {% endblock %}

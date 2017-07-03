@@ -16,12 +16,11 @@ def main(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             emailHash = md5(email.strip().lower().encode()).hexdigest()
-            avatarUrl = reverse('avatar:getimg', kwargs={'id_img': emailHash, 'size': 300})
-            print(emailHash)
+            avatarUrl = reverse('avatar:getimg', kwargs={'id_img': emailHash, 'size': 400})
 
             if request.is_ajax():
                 xmlResponse = Taconite()
-                xmlResponse.css('#testImg', 'background-image', avatarUrl) #tofix
+                xmlResponse.replace("#testImg", "<img id='testImg' src='%s'></img>" % avatarUrl)
                 return HttpResponse(xmlResponse, content_type="text/xml")
 
     else:
