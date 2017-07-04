@@ -6,6 +6,11 @@ from io             import BytesIO
 import xml.dom.minidom as dom
 import re
 
+def openImageUrl(url):
+    """Returns an image object from the World Wide Web."""
+    file = BytesIO(urlopen(url).read())
+    return Image.open(file)
+
 def pickPeople():
     """Returns a random image of a quite fancy people."""
     page = urlopen("http://www.news-people.fr/liste-people/")
@@ -13,8 +18,7 @@ def pickPeople():
     pageCode = page.read().decode("ISO-8859-1")
     urls = reg.findall(pageCode)
     url = "http://www.news-people.fr" + choice(urls)
-    file = BytesIO(urlopen(url).read())
-    return Image.open(file)
+    return openImageUrl(url)
 
 def linInterp(x, xMin=0, xMax=1, yMin=0, yMax=1):
     """Simple linear interpolation.
@@ -71,7 +75,7 @@ def genAvatar(uid, width=128):
     renderSize = (width*2, width*2)
     image = Image.new('RGBA', renderSize, randRGBGrey())
     if uid == "jeanmarielepen" or uid == "6677f7953de478433b8814f0b9b4a5ff":
-        image = Image.open("avatar/static/avatar/img/lepen.jpg").convert('RGBA').resize(renderSize, Image.BICUBIC)
+        image = openImageUrl("http://www.minaw.net/static/avatar/img/lepen.jpg").convert('RGBA').resize(renderSize, Image.BICUBIC)
     # else:
     #     image = pickPeople().convert('L').convert('RGBA').resize(renderSize, Image.BICUBIC)
     colorStep = randint(steps/2, steps-1)
