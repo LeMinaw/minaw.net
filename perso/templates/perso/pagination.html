@@ -1,0 +1,27 @@
+{# This template needs a <page> and a <paginator> to work. #}
+
+{% if page.has_other_pages %}
+  <div class="w3-container">
+    <p class="w3-left">
+      {% if pageId > 2 %}
+        <a href="{% url 'perso:main' pageId=1 cat_slug=cat_slug %}" class="w3-button w3-white w3-border"><b>1</b></a>
+      {% endif %}
+    </p>
+
+    <p class="w3-center">
+      {% if page.has_previous %}
+        <a href="{% url 'perso:main' pageId=page.previous_page_number cat_slug=cat_slug %}" class="w3-button w3-white w3-border"><b>{{ page.previous_page_number }}</b></a>
+      {% endif %}
+      <span class="w3-button w3-hover-black w3-black"><b>{{ pageId }}</b></span>
+      {% if page.has_next %}
+        <a href="{% url 'perso:main' pageId=page.next_page_number cat_slug=cat_slug %}" class="w3-button w3-white w3-border"><b>{{ page.next_page_number }}</b></a>
+      {% endif %}
+    </p>
+
+    <p class="w3-right">
+      {% if pageId < paginator.num_pages|add:'-2' %}
+        <a href="{% url 'perso:main' pageId=paginator.num_pages cat_slug=cat_slug %}" class="w3-button w3-white w3-border"><b>{{ paginator.num_pages }}</b></a>
+      {% endif %}
+    </p>
+  </div>
+{% endif %}

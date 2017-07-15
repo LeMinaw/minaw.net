@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'tinymce',
     'namegen',
     'dynimg',
     'playel',
@@ -126,6 +127,20 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+# TinyMCE
+
+TINYMCE_COMPRESSOR = True
+
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "table,spellchecker,paste,searchreplace",
+    'theme': "advanced",
+    'custom_undo_redo_levels': 32,
+}
+
+
+# Prod settings
 
 try:
     from settingsprod import *

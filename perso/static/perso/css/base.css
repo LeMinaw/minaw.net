@@ -1,142 +1,92 @@
-@font-face {
-  font-family: "Cella";
-  src: url("/static/perso/fnt/Cella.ttf");
-}
+/* Fonts */
 
 @font-face {
-  font-family: "OCR";
-  src: url("/static/perso/fnt/OCR.ttf");
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v14/cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'), local('Oswald-Regular'), url(https://fonts.gstatic.com/s/oswald/v13/pEobIV_lL25TKBpqVI_a2w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 
-/* Arrière plan */
+/* Colors */
 
-body {
-  background-color: #000000;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin: 0;
-  color: rgb(255, 255, 255);
+.w3-hover-text-cyan:hover {color: #00BCD4}
+.w3-hover-text-orange:hover {color: #FF9800}
+
+/* Global */
+
+body {font-family: "Open Sans"}
+h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
+h1.w3-jumbo, h3 {text-transform: uppercase}
+a.w3-block, a.w3-tag {text-decoration: none}
+ul {margin: 0}
+img.fullwidth {
+    width: 100%;
+    height: auto;
+}
+p a:link, p a:visited {
+    text-decoration: none;
+    color: #1CF;
+}
+p a:hover {
+    text-decoration: underline;
 }
 
-/* Header */
+/* Banner */
 
-header {
-  height: 50px;
-  min-width: 1150px;
-  border-bottom: solid 1px;
-  border-color: rgb(255, 255, 255);
-  border-color: rgba(255, 255, 255, 0.5);
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.5);
+#nav {margin-top: 46px}
+img.bigCover {
+    object-fit: cover;
+    height: 600px;
+}
+img.smallCover {
+    object-fit: cover;
+    height: 260px;
 }
 
-.navbarlist {
-  margin: 0;
-  display: table;
-  width: 94%;
-  max-width: 1100px;
+/* Main content */
+
+#content {
+    max-width: 1600px;
+    margin-top: 46px;
 }
+.comments, #nav {display: none}
+.avatar {width: 90px}
 
-.navbaritem {
-  border-left: solid 1px;
-  border-color: rgb(255, 255, 255);
-  border-color: rgba(255, 255, 255, 0.5);
-  display: table-cell;
+/* Sidebar */
+
+#lastPosts img {
+    object-fit: cover;
+    height: 50px;
+    width: 70px;
 }
-
-#navbarhome a{
-  font-size: 20px;
+#lastPosts li {overflow: hidden}
+#random img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
+#random .w3-display-container {height: 120px}
+#random h6 {margin: 0}
 
-.navbaritem a{
-  padding: 12px 20px 26px 20px;
-  display: block;
-  text-align: center;
-  color: #ffffff;
-  text-decoration: none;
-  transition: all .3s;
-  font-family: "OCR", Courier, monospace;
-  font-size: 17px;
+/* Modals */
+
+#photoModal {
+    padding: 32px;
+    height: 100vh;
 }
-
-.navbaritem:hover, .navbaritem:focus {
-  background: rgb(90, 90, 90);
-  background: rgba(90, 90, 90, 0.5);
-  background: linear-gradient(rgba(90, 90, 90, 0.5), transparent); /* TODO: Support multinavig*/
-}
-
-.navbaritem a:hover, .navbaritem a:focus {
-  padding: 12px 30px 26px 30px;
-  text-decoration: none;
-}
-
-/* Contenu */
-
-.content {
-  padding-top: 60px;
-  padding-bottom: 30px;
-  max-width: 600px;
-  height: auto;
-  margin: auto;
-}
-
-.content p, .content li {
-  font-family: "Courier New", Courier, monospace;
-  color: #ffffff;
-  font-size: 18px;
-  text-indent: 25px;
-}
-
-.content li {
-  list-style: circle;;
-  text-indent: 0;
-  margin-bottom: 8px;
-}
-
-h1 {
-  font-family: "Cella", Courier, monospace;
-  font-size: 85px;
-  text-align: center;
-  margin: 20px;
-}
-
-/* Logo */
-
-.logo {
-  padding-top: 150px;
-  padding-bottom: 150px;
-  display: block;
-  margin: auto;
-}
-
-/* Liens hypertextes */
-
-a {
-  text-decoration: none;
-  color: #0090f0;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Pied de page */
-
-footer {
-  margin-top: 150px;
-  margin-bottom: 50px;
-  border-top: solid 1px;
-  border-bottom: solid 1px;
-  border-color: rgb(255, 255, 255);
-  border-color: rgba(255, 255, 255, 0.5);
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-footer p {
-  text-align: center;
-  font-size: 16px;
-  font-family: "OCR", Courier, monospace;
-  color: #ffffff;
+.w3-modal-content { padding: 32px }
+img.w3-modal-content {
+    padding: 0;
+    width: 100% !important;
+    height: 100%;
+    object-fit: contain;
+    background: none;
 }

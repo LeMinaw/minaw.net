@@ -32,12 +32,12 @@
 
             <ul id="slide-out" class="side-nav fixed">
                 <br/>
-                <li class="center-align"><img src="http://www.paris-lavillette.archi.fr/uploads/images/LOGOS-ensaplv/W200.png" alt="Logo de l'ENSAPLV"/></li>
+                <li class="center-align"><img src="{% static 'profs/img/logo-ensa.png' %}" alt="Logo de l'ENSAPLV"/></li>
                 <div class="container">
                     <li><a href="/profs" class="waves-effect">Accueil</a></li>
                     <li><a href="{% url 'profs:modules' %}" class="waves-effect">Enseignements</a></li>
-                    <li><a href="/profs/about" class="waves-effect">À propos</a></li>
-                    <li><a href="/profs/contact" class="waves-effect">Contact</a></li>
+                    <li><a href="{% url 'profs:about' %}" class="waves-effect">À propos</a></li>
+                    <li><a href="{% url 'profs:contact' %}" class="waves-effect">Contact</a></li>
                 </div>
             </ul>
 

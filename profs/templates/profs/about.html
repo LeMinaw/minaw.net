@@ -13,7 +13,7 @@
 {% block body %}
     <h2>Quelques précisions</h2>
     <h4>C'est quoi ce site ?</h4>
-    <p class="flow-text">Normalement, tout est expliqué sur la <a href="{% url 'main' %}">page d'acceuil</a>. <br/> C'est un projet personnel, lancé, géré et financé par un étudiant de l'ENSAPLV (c'est moi lol, ça va ?).</p>
+    <p class="flow-text">Normalement, tout est expliqué sur la <a href="{% url 'profs:main' %}">page d'acceuil</a>. <br/> C'est un projet personnel, lancé, géré et financé par un étudiant de l'ENSAPLV (c'est moi lol, ça va ?).</p>
     <h4>Pourquoi y'a les premières années ?</h4>
     <p class="flow-text">Parce qu'en général, ils aiment savoir à quelle sauce ils vont être mangés ! <br/> Inutile donc d'émettre de réels "avis" sur ces enseignements de première année. Préférez partager vos encouragements, et vos conseils avisés !</p>
     <h4>Pourquoi y'a pas les masters ?</h4>
@@ -21,5 +21,5 @@
     <h4>Avec quoi tu fais ça ?</h4>
     <p class="flow-text">Le backend est programmé en Python, à l'aide du framework Django. En plus d'utliser HTML5, CSS3 et JS, le frontend est basé sur le framework MaterializeCSS.</p>
     <h4>Pour terminer...</h4>
-    <p class="flow-text">Ce site est une version en cours de développement. Si vous trouvez un bug, ou avez une idée d'amélioration, signalez le via l'<a href="{% url 'contact' %}">onglet contact</a>.</p>
+    <p class="flow-text">Ce site est une version en cours de développement. Si vous trouvez un bug, ou avez une idée d'amélioration, signalez le via l'<a href="{% url 'profs:contact' %}">onglet contact</a>.</p>
 {% endblock %}

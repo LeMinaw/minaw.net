@@ -1,0 +1,39 @@
+{% extends "perso/base.html" %}
+
+{% block title %}
+  À propos
+{% endblock %}
+
+{% block content %}
+  <div class="w3-row w3-padding">
+    <div class="w3-col l2 s12"><br/></div>
+    <div class="w3-col l8 s12">
+      <div class="w3-container w3-white w3-margin w3-padding-large">
+        <h1>À propos</h1>
+        <h2>Ma gueule</h2>
+        <p>Je suis étudiant en architecture et ingénierie du bâtiment.<br/>Mais pas que...</p>
+        <p>Je suis passionné d'arts et de techniques, et ce site à pour vocation d'accueillir mes divers travaux.<br/>J'essaie d'intégrer la machine à mon travail, et de lui faire faire ce qu'elle seule peut accomplir.</p>
+        <p>Si vous voulez me contacter pour quoi que ce soit, vous pouvez le faire via l'<a href="{% url 'perso:contact' %}">onglet contact</a>.</p>
+        <h2>Inspiration et admiration</h2>
+        <ul class="w3-col l4 s12">
+          <li>László Moholy-Nagy</li>
+          <li>Steve Reich</li>
+          <li>Yes</li>
+        </ul>
+        <ul class="w3-col l4 s12">
+          <li>Constant Nieuwenhuys</li>
+          <li>Wim Wenders</li>
+          <li>Malevitch</li>
+        </ul>
+        <ul class="w3-col l4 s12">
+          <li>Realmyop (Jemleglitch)</li>
+          <li>Hanz Zimmer</li>
+          <li>Des gens</li>
+        </ul>
+        <h2>À propos de ce site</h2>
+        <p>Ce site est fièrement propulsé par le <a href="https://www.djangoproject.com/">framework Django</a>. Il utillise également <a href="https://www.w3schools.com/w3css/">w3.css</a> et <a href="https://jquery.com/">JQuery</a> (oui, je sais...) pour ce qui relève de l'affichage.</p>
+        <p>Comme j'avais des besoins particuliers, je l'ai programmé moi même. Si ça vous intérersse, le <a href="https://github.com/LeMinaw/minaw.net">code source</a> est disponible sur <a href="https://github.com/LeMinaw/">mon GitHub</a>.</p>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
