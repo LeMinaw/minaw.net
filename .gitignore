@@ -17,7 +17,7 @@ media/
 *.old
 
 # Security secrets
-settings-prod.py
+settingsprod.py
 
 # PyInstaller
 *.manifest
@@ -32,7 +32,7 @@ pip-delete-this-directory.txt
 
 # Django stuff:
 *.log
-settingsprod.py
+local-settings.py
 
 # pyenv
 .python-version
