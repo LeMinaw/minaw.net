@@ -18,7 +18,6 @@ py==1.4.33
 pycparser==2.17
 Pygments==2.2.0
 pyparsing==2.2.0
-pypiwin32==220
 pyreadline==2.1
 pytest==3.0.7
 python-dateutil==2.6.0
