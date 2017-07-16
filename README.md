@@ -6,6 +6,10 @@ This repo contains several personal web projects, mainly using the Django framew
 
 My personal website.
 
+## Avatar
+
+Procedural avatar generator.
+
 ## DynIMG
 
 Dynamic image generator.
