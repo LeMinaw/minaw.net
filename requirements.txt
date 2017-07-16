@@ -1,5 +1,4 @@
-appdirs==1.4.3bitstring==3.1.5cffi==1.10.0
-colorama==0.3.9
+appdirs==1.4.3bitstring==3.1.5cffi==1.10.0colorama==0.3.9
 cycler==0.10.0
 decorator==4.0.11
 dill==0.2.6
@@ -14,6 +13,7 @@ numpy==1.12.1
 olefile==0.44
 opencv-python==3.2.0.6
 Pillow==4.0.0
+psycopg2==2.7.1
 py==1.4.33
 pycparser==2.17
 Pygments==2.2.0
