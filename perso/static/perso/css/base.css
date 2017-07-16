@@ -59,6 +59,13 @@ img.smallCover {
 }
 .comments, #nav {display: none}
 .avatar {width: 90px}
+@media (max-width:600px) {
+    .w3-row.w3-padding {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .nomargin-small { margin: 0 !important }
+}
 
 /* Sidebar */
 

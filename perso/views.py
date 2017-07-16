@@ -50,7 +50,10 @@ def main(request, pageId=1, cat_slug=None):
 
     tags = sorted(Tag.objects.all(), key=lambda tag: tag.get_occurences())[:16]
 
-    randomPublications = sample(list(Publication.objects.all()), 4)
+    if Publication.objects.count() >= 4:
+        randomPublications = sample(list(Publication.objects.all()), 4)
+    else:
+        randomPublications = Publication.objects.all()
     randomPublications = nest(randomPublications, 2)
 
     if "subscribe" in request.POST:
