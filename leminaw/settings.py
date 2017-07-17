@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'storages',
     'tinymce',
     'namegen',
     'dynimg',
@@ -107,6 +108,17 @@ LOCALE_PATH = (
 )
 
 
+# AWS settings
+
+AWS_ACCESS_KEY_ID = "AKIAIJY7BWC3IJCOPYJQ"
+
+AWS_SECRET_ACCESS_KEY = "secretKey"
+
+AWS_STORAGE_BUCKET_NAME = "minaw"
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
@@ -118,6 +130,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
+STATICFILES_LOCATION = 'staticfiles'
+
 
 # Media files (uploads)
 # https://docs.djangoproject.com/en/1.8/
@@ -125,6 +139,8 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+MEDIA_LOCATION = 'media'
 
 
 # TinyMCE
@@ -152,22 +168,28 @@ if os.environ.get("PROD") != None:
 
     SECRET_KEY = os.environ.get("SECRET_KEY")
 
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_KEY")
+
     DEBUG = False
+
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
+    STATIC_URL = "https://%s/%s" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
+    MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIA_LOCATION)
 
     LOGGING = {
         'version': 1,
         'disable_existing_loggers': False,
-        'handlers': {
-            'console': {
-                'class': 'logging.StreamHandler',
-            },
-        },
+        'handlers': {'console': {'class': 'logging.StreamHandler'}},
         'loggers': {
             'django': {
                 'handlers': ['console'],
-                'level': os.getenv('DJANGO_LOG_LEVEL', 'ERROR'),
-            },
-        },
+                'level': os.getenv('DJANGO_LOG_LEVEL', 'ERROR')
+            }
+        }
     }
 
 else:
