@@ -21,7 +21,7 @@ SECRET_KEY = 'DevKey'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "minaw.herokuapp.com", "www.minaw.net"]
+ALLOWED_HOSTS = ["localhost", "minaw.herokuapp.com", ".minaw.net", ".amazonaws.com"]
 
 
 # Application definition
@@ -159,7 +159,7 @@ TINYMCE_DEFAULT_CONFIG = {
 
 # Prod settings
 
-if os.environ.get("PROD") != None:
+if os.environ.get("PROD") == 'TRUE':
     print("Production settings found, overriding dev settings.")
 
     import dj_database_url

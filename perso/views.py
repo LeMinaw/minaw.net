@@ -27,8 +27,8 @@ def main(request, pageId=1, cat_slug=None):
     moreBarItems = Category.objects.filter(menu=False)
 
     if cat_slug is None:
-        coverImage = choice(Cover.objects.filter(pin=True))
         publications = Publication.objects.filter(pin=True)
+        coverImage = choice(Cover.objects.filter(pin=True))
     else:
         categ = Category.objects.get(slug=cat_slug)
         publications = Publication.objects.filter(categ=categ)
