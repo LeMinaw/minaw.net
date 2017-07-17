@@ -115,7 +115,7 @@ LOCALE_PATH = (
 # class StaticStorage(whitenoise.django.GzipManifestStaticFilesStorage):
 #     manifest_strict = False
 
-STATICFILES_STORAGE = whitenoise.django.GzipManifestStaticFilesStorage
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
 
