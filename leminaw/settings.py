@@ -25,7 +25,7 @@ SECRET_KEY = 'DevKey'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["minaw.herokuapp.com", "minaw.net"]
 
 
 # Application definition
