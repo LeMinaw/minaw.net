@@ -7,6 +7,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+from random   import choice
+from string   import ascii_letters, digits
 import sys
 import os
 
