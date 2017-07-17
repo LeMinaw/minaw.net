@@ -35,7 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'storages',
-    'tinymce',
+    'django_markwhat',
     'namegen',
     'dynimg',
     'playel',
@@ -141,20 +141,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 MEDIA_LOCATION = 'media'
-
-
-# TinyMCE
-
-TINYMCE_COMPRESSOR = True
-
-TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,spellchecker,paste,searchreplace,style",
-    'theme': "advanced",
-    'custom_undo_redo_levels': 32,
-    'height' : 500,
-    'width': 1000,
-    'resize': "both"
-}
 
 
 # Prod settings

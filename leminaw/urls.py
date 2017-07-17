@@ -7,7 +7,6 @@ from django.contrib          import admin
 
 urlpatterns = [
     url(r'^admin/?',   admin.site.urls),
-    url(r'^tinymce/?', include('tinymce.urls')),
     url(r'^namegen/?', include("namegen.urls")),
     url(r'^dynimg/?',  include("dynimg.urls")),
     url(r'^playel/?',  include("playel.urls")),
