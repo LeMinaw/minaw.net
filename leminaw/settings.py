@@ -45,6 +45,8 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE = (
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -52,7 +54,6 @@ MIDDLEWARE = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
 )
 
 ROOT_URLCONF = 'leminaw.urls'
@@ -111,7 +112,10 @@ LOCALE_PATH = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# class StaticStorage(whitenoise.django.GzipManifestStaticFilesStorage):
+#     manifest_strict = False
+
+STATICFILES_STORAGE = whitenoise.django.GzipManifestStaticFilesStorage
 
 STATIC_URL = '/static/'
 
