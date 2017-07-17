@@ -8,14 +8,11 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 import sys
-path = '/home/leminaw/leminaw/leminaw'
-if path not in sys.path:
-    sys.path.append(path)
+import os
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
-import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -25,7 +22,7 @@ SECRET_KEY = 'DevKey'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["minaw.herokuapp.com", "minaw.net"]
+ALLOWED_HOSTS = ["localhost", "minaw.herokuapp.com", "www.minaw.net"]
 
 
 # Application definition
@@ -92,9 +89,6 @@ DATABASES = {
     }
 }
 
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -141,15 +135,24 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 TINYMCE_COMPRESSOR = True
 
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,spellchecker,paste,searchreplace",
+    'plugins': "table,spellchecker,paste,searchreplace,style",
     'theme': "advanced",
     'custom_undo_redo_levels': 32,
+    'height' : 500,
+    'width': 1000,
+    'resize': "both"
 }
 
 
 # Prod settings
 
-try:
-    from settingsprod import *
-except ImportError:
-    print("No production settings found, using dev settings.")
+if os.environ.get("PROD") != None:
+    print("Production settings found, overriding dev settings.")
+
+    import dj_database_url
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
+
+    SECRET_KEY = ''.join([choice(ascii_letters + digits) for n in range(64)])
+
+    DEBUG = False
