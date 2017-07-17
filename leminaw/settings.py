@@ -7,8 +7,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
-from random   import choice
-from string   import ascii_letters, digits
 import sys
 import os
 
@@ -155,6 +153,9 @@ if os.environ.get("PROD") != None:
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
 
-    SECRET_KEY = ''.join([choice(ascii_letters + digits) for n in range(64)])
+    SECRET_KEY = os.environ.get("SECRET_KEY")
 
     DEBUG = False
+
+else:
+    print("No production settings found, using dev settings.")
