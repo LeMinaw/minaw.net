@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 
-from re
+import re
 from django import template
 from perso.models import Cover
 
