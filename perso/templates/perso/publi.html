@@ -15,7 +15,7 @@
       </div>
       <div class="w3-justify">
         <img src="{{ publication.cover.image.url }}" class="w3-padding-16 fullwidth">
-        <p>{{ publication.content|img|commonmark|default:publication.abstract }}</p>
+        {{ publication.content|img|commonmark }}
         <p class="w3-clear"></p>
         <div class="comments w3-row w3-margin-bottom w3-show">
           <hr>

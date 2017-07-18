@@ -13,7 +13,7 @@ def img_repl(tag_match):
     cover_name = re.match(reg, tag_match.group(0)).group(1)
     css_class = re.match(reg, tag_match.group(0)).group(2)
     cover = Cover.objects.get(name=cover_name)
-    return "<img src=\"%s\" alt=\"%s\" class=\"%s\">" % (cover.image.url, cover.descr, css_class)
+    return "<img src=\"%s\" alt=\"%s\" class=\"%s\"/>" % (cover.image.url, cover.descr, css_class)
 
 
 @register.filter(name='img')
