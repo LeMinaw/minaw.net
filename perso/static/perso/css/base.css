@@ -31,6 +31,7 @@ img.fullwidth {
     width: 100%;
     height: auto;
 }
+img.crisp {image-rendering: crisp-edges}
 p a:link, p a:visited {
     text-decoration: none;
     color: #1CF;
