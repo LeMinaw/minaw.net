@@ -36,6 +36,15 @@
           </div>
           <hr>
 
+        {% empty %}
+        <div class="w3-container w3-white w3-margin w3-padding-large">
+          <div class="w3-center">
+            <h3>À VENIR !</h3>
+            <p>Aucune publication dans la catégorie {{ categ }} pour le moment.</p>
+            <h6 class="w3-margin-bottom w3-margin-top"><a href="{% url 'perso:main' %}" class="w3-button w3-block w3-large w3-blue-gray w3-text-white">RETOURNER À L'ACCUEIL</a></h6>
+          </div>
+        </div>
+
         {% endfor %}
 
         {% include "perso/pagination.html" %}
@@ -46,7 +55,7 @@
       <div class="w3-col l4">
         {# About Card #}
         <div class="w3-white w3-margin">
-          <img src="{% static '/perso/img/profile.jpg' %}" alt="LeMinaw" class="fullwidth">
+          <img src="{% static 'perso/img/profile.jpg' %}" alt="LeMinaw" class="fullwidth">
           <div class="w3-container w3-black">
             <h4>Le minaw</h4>
             <p>Je suis un artiste contemporain visionnaire, adoptant une vision progressiste des systèmes de pensées qui nous entourent. J'adore me beurrer la biscote, et j'espère que vous aussi. Ceci étant je ne suis pas contre un peu de confiote.</p>

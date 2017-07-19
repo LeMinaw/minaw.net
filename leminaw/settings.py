@@ -8,14 +8,10 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 import sys
-path = '/home/leminaw/leminaw/leminaw'
-if path not in sys.path:
-    sys.path.append(path)
-
+import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
-import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -25,7 +21,7 @@ SECRET_KEY = 'DevKey'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "minaw.herokuapp.com", ".minaw.net", ".amazonaws.com"]
 
 
 # Application definition
@@ -38,7 +34,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'tinymce',
+    'storages',
+    'django_markwhat',
     'namegen',
     'dynimg',
     'playel',
@@ -48,6 +45,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE = (
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -55,7 +53,6 @@ MIDDLEWARE = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
 )
 
 ROOT_URLCONF = 'leminaw.urls'
@@ -111,14 +108,29 @@ LOCALE_PATH = (
 )
 
 
+# AWS settings
+
+AWS_ACCESS_KEY_ID = "AKIAIJY7BWC3IJCOPYJQ"
+
+AWS_SECRET_ACCESS_KEY = "secretKey"
+
+AWS_STORAGE_BUCKET_NAME = "minaw"
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+STATICFILES_LOCATION = 'staticfiles'
 
 
 # Media files (uploads)
@@ -128,21 +140,43 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-
-# TinyMCE
-
-TINYMCE_COMPRESSOR = True
-
-TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,spellchecker,paste,searchreplace",
-    'theme': "advanced",
-    'custom_undo_redo_levels': 32,
-}
+MEDIA_LOCATION = 'media'
 
 
 # Prod settings
 
-try:
-    from settingsprod import *
-except ImportError:
+if os.environ.get("PROD") == 'TRUE':
+    print("Production settings found, overriding dev settings.")
+
+    import dj_database_url
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
+
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_KEY")
+
+    DEBUG = False
+
+    STATICFILES_STORAGE = 'leminaw.custom_storages.StaticStorage'
+
+    DEFAULT_FILE_STORAGE = 'leminaw.custom_storages.MediaStorage'
+
+    STATIC_URL = "https://%s/%s" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
+    MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIA_LOCATION)
+
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {'console': {'class': 'logging.StreamHandler'}},
+        'loggers': {
+            'django': {
+                'handlers': ['console'],
+                'level': os.getenv('DJANGO_LOG_LEVEL', 'ERROR')
+            }
+        }
+    }
+
+else:
     print("No production settings found, using dev settings.")

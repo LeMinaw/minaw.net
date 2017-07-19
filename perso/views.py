@@ -1,12 +1,13 @@
 #-*- coding: utf-8 -*-
 
-from django.shortcuts import render
-from django.http      import HttpResponse
 from django.core.paginator import Paginator
-from perso.models     import *
-from perso.forms      import *
-from random           import choice, sample
-from math             import ceil
+from django.shortcuts      import render, render_to_response
+from django.template       import RequestContext
+from django.http           import HttpResponse, Http404
+from random                import choice, sample
+from math                  import ceil
+from perso.forms           import *
+from perso.models          import *
 
 
 def nest(iterable, count):
@@ -27,12 +28,18 @@ def main(request, pageId=1, cat_slug=None):
     moreBarItems = Category.objects.filter(menu=False)
 
     if cat_slug is None:
-        coverImage = choice(Cover.objects.filter(pin=True))
         publications = Publication.objects.filter(pin=True)
+        coverImage = choice(Cover.objects.filter(pin=True))
     else:
-        categ = Category.objects.get(slug=cat_slug)
+        try:
+            categ = Category.objects.get(slug=cat_slug)
+        except Category.DoesNotExist:
+            raise Http404()
         publications = Publication.objects.filter(categ=categ)
-        coverImage = choice(publications.exclude(cover=None).filter(cover__pin=True)).cover
+        try:
+            coverImage = choice(publications.exclude(cover=None).filter(cover__pin=True)).cover
+        except IndexError:
+            coverImage = choice(Cover.objects.filter(pin=True))
 
     paginator = Paginator(publications, 3)
     page = paginator.page(pageId)
@@ -79,7 +86,10 @@ def publication(request, slug):
     publication = Publication.objects.get(slug=slug)
     categ = publication.categ
 
-    coverImage = choice(Publication.objects.filter(categ=categ).exclude(cover=None).filter(cover__pin=True)).cover
+    try:
+        coverImage = choice(Publication.objects.filter(categ=categ).exclude(cover=None).filter(cover__pin=True)).cover
+    except IndexError:
+        coverImage = choice(Cover.objects.filter(pin=True))
 
     try:
         prev_pub = Publication.get_previous_by_added(publication)
@@ -117,3 +127,16 @@ def contact(request):
     coverImage = choice(Cover.objects.filter(pin=True))
 
     return render(request, "perso/contact.html", locals())
+    
+
+def create_error_view(code):
+    def error_view(request, *args, **kwargs):
+        barItems     = Category.objects.filter(menu=True)
+        moreBarItems = Category.objects.filter(menu=False)
+
+        coverImage = choice(Cover.objects.filter(pin=True))
+
+        response = render(request, "perso/error.html", locals())
+        response.status_code = code
+        return response
+    return error_view

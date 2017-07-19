@@ -1,19 +1,10 @@
 #-*- coding: utf-8 -*-
 
 from django.contrib  import admin
-from django.forms    import ModelForm
-from tinymce.widgets import TinyMCE
 from perso.models    import *
 
 
-class PublicationAdminForm(ModelForm):
-    class Meta:
-        model = Publication
-        widgets = {'content': TinyMCE()}
-        fields = '__all__'
-
 class PublicationAdmin(admin.ModelAdmin):
-    form = PublicationAdminForm
     list_display        = ('__str__', 'pin', 'slug', 'added')
     list_filter         = ('categ','tags')
     date_hierarchy      = 'added'

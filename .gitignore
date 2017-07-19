@@ -12,6 +12,7 @@ env/
 build/
 
 # Local test files
+staticfiles/
 media/
 *.sqlite3
 *.old
