@@ -1,0 +1,29 @@
+{% extends "perso/base.html" %}
+
+{% block title %}
+  Erreur
+{% endblock %}
+
+{% block content %}
+  <div class="w3-row w3-padding">
+    <div class="w3-col l2 s12"><br/></div>
+    <div class="w3-col l8 s12">
+      <div class="w3-container w3-white w3-margin w3-padding-large w3-center">
+        <h1>Erreur</h1>
+        <h2>{{ code }}</h2>
+        <h3>
+          {% if code == 400 %}
+            Requête invalide.
+          {% elif code == 403 %}
+            Accès refusé.
+          {% elif code == 404 %}
+            Page introuvable.
+          {% else %}
+            Erreur interne.
+          {% endif %}
+        </h3>
+        <h6 class="w3-margin-bottom w3-margin-top"><a href="{% url 'perso:main' %}" class="w3-button w3-block w3-large w3-blue-gray w3-text-white">RETOURNER À L'ACCUEIL</a></h6>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
