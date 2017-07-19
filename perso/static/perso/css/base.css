@@ -27,14 +27,14 @@ h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
 h1.w3-jumbo, h3 {text-transform: uppercase}
 a.w3-block, a.w3-tag {text-decoration: none}
 ul {margin: 0}
-pre { overflow-x: auto }
+pre {overflow-x: auto}
 code {
-    display: inline-block;
     border: 1px solid #CCC;
     border-radius: 4px;
     background-color: #FBFBFB;
     padding: 0 3px;
 }
+pre code {display: inline-block}
 img.fullwidth {
     width: 100%;
     height: auto;
