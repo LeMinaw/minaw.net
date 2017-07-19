@@ -32,7 +32,10 @@ def main(request, pageId=1, cat_slug=None):
     else:
         categ = Category.objects.get(slug=cat_slug)
         publications = Publication.objects.filter(categ=categ)
-        coverImage = choice(publications.exclude(cover=None).filter(cover__pin=True)).cover
+        try:
+            coverImage = choice(publications.exclude(cover=None).filter(cover__pin=True)).cover
+        except IndexError:
+            coverImage = choice(Cover.objects.filter(pin=True))
 
     paginator = Paginator(publications, 3)
     page = paginator.page(pageId)
@@ -79,7 +82,10 @@ def publication(request, slug):
     publication = Publication.objects.get(slug=slug)
     categ = publication.categ
 
-    coverImage = choice(Publication.objects.filter(categ=categ).exclude(cover=None).filter(cover__pin=True)).cover
+    try:
+        coverImage = choice(Publication.objects.filter(categ=categ).exclude(cover=None).filter(cover__pin=True)).cover
+    except IndexError:
+        coverImage = choice(Cover.objects.filter(pin=True))
 
     try:
         prev_pub = Publication.get_previous_by_added(publication)

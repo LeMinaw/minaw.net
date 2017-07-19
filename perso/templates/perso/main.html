@@ -36,6 +36,15 @@
           </div>
           <hr>
 
+        {% empty %}
+        <div class="w3-container w3-white w3-margin w3-padding-large">
+          <div class="w3-center">
+            <h3>À VENIR !</h3>
+            <p>Aucune publication dans la catégorie {{ categ }} pour le moment.</p>
+            <h6 class="w3-margin-bottom w3-margin-top"><a href="{% url 'perso:main' %}" class="w3-button w3-block w3-large w3-blue-gray w3-text-white">RETOURNER À L'ACCUEIL</a></h6>
+          </div>
+        </div>
+
         {% endfor %}
 
         {% include "perso/pagination.html" %}
