@@ -162,7 +162,7 @@ if os.environ.get("PROD") == 'TRUE':
 
     DEFAULT_FILE_STORAGE = 'leminaw.custom_storages.MediaStorage'
 
-    STATIC_URL = "https://%s/%s" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 
     MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIA_LOCATION)
 
