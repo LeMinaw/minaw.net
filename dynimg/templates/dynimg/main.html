@@ -9,7 +9,7 @@
   <h2>Qu'est-ce que c'est ?</h2>
   <p>DynImg permets de lier plusieurs images à une seule adresse web. Quand un lien DynImg est chargé, une image aléatoire est tirée au sort parmi la liste que vous avez préalablement fournie.</p>
   <p>Ça peut être très utile pour faire une bannière web aléatoire facilement, ou pour afficher plusieurs déclinaisons d'un avatar ou d'une signature sur un forum.</p>
-  {% if image_id == None %}
+  {% if image == None %}
     <h2>Créez votre image dynamique dès maintenant !</h2>
     <p>Suivez simplement les étapes ci dessous.</p>
     <form action="{% url "dynimg:main" %}" method="post">
@@ -24,11 +24,10 @@
       {{ form.non_field_errors }}
       <input type="submit" value="C'est parti !" />
     </form>
-  {% endif %}
-  {% if image_id != None %}
+  {% else %}
     <h2>Succès !</h2>
     <p>Voici le lien vers votre image dynamique. Utilisez le simplement comme un lien ordinaire.</p>
-    <code>http://{{ host }}/dynimg/i/{{ image_id }}</code>
+    <code>{{ request.get_host }}{{ image.get_absolute_url }}</code>
     <p>Merci !</p>
   {% endif %}
 {% endblock %}

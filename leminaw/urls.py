@@ -9,7 +9,8 @@ from perso.views             import create_error_view
 urlpatterns = [
     url(r'^admin/?',   admin.site.urls),
     url(r'^namegen/?', include("namegen.urls")),
-    url(r'^dynimg/?',  include("dynimg.urls")),
+    url(r'^dynimg/',   include("dynimg.urls")), # Fixing reverse in dynimg
+    url(r'^dynimg',    include("dynimg.urls")),
     url(r'^playel/?',  include("playel.urls")),
     url(r'^profs/?',   include("profs.urls")),
     url(r'^avatar/?',  include("avatar.urls")),
