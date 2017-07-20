@@ -11,24 +11,22 @@ class ImageUrlAdmin(admin.ModelAdmin):
             return  start + '[...]' + end
         else:
             return imageUrl.url
-    
+    short_url.short_description = "URL abrégée"
+
     def used_by(self, imageUrl):
-        return imageUrl.dynamicimg_set.all().count()
-    
-    list_display   = ('id', 'short_url', 'dwnlTime', 'used_by', 'created', 'last_used', 'times_used')
-  # list_filter    = ()
-  # date_hierarchy = 'created'
-    ordering       = ('id', 'times_used', 'created')
-    search_fields  = ('id', 'url')
+        return imageUrl.dynamicimg_set.count()
+    used_by.short_description = "Utilisations"
+
+    list_display   = ('short_url', 'dwnlTime', 'used_by', 'created', 'last_used', 'times_used')
+    date_hierarchy = 'created'
+    ordering       = ('-times_used',)
+    search_fields  = ('url',)
 
 class DynamicImgAdmin(admin.ModelAdmin):
-    list_display   = ('id', 'name', 'urls_nb', 'created', 'last_used', 'times_used')
-  # list_filter    = ()
-  # date_hierarchy = 'created'
-    ordering       = ('id', 'times_used', 'created')
+    list_display   = ('__str__', 'name', 'get_urls_nb', 'created', 'last_used', 'times_used')
+    date_hierarchy = 'created'
+    ordering       = ('-times_used',)
     search_fields  = ('id', 'name')
 
-admin.site.register(Stat)
 admin.site.register(ImageUrl, ImageUrlAdmin)
 admin.site.register(DynamicImg, DynamicImgAdmin)
-

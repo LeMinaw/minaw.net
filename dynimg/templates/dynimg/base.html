@@ -13,8 +13,6 @@
     <link rel="icon" href="favicon.ico" type="icon/png">
     <link rel="stylesheet" href="{% static 'dynimg/css/base.css' %}">
     <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
-    {% block scripts %}{% endblock %}
-    {% block stylesheet %}{% endblock %}
     <title>DynImg | {% block title %}{% endblock %}</title>
   </head>
 
@@ -23,13 +21,10 @@
       <nav>
         <ul>
           <li class="navbaritem">
-            <a href="/dynimg/about/">À propos</a>
+            <a href="{% url 'dynimg:about' %}">À propos</a>
           </li>
           <li class="navbaritem">
-            <a href="/dynimg/">DynImg</a>
-          </li>
-          <li class="navbaritem">
-            <a href="/dynimg/contact/">Contact</a>
+            <a href="{% url 'dynimg:main' %}">DynImg</a>
           </li>
         </ul>
       </nav>

@@ -16,14 +16,14 @@
   <h2>Est-ce que DynImg est un hébergeur d'images ?</h2>
   <p>Pas du tout ! DynImg fait juste le lien entre vos images statiques et votre lien DynImg unique. Vous devez héberger vos images par vos propres moyens, sur un service dédié.
 
-  <h2>Qu'est-ce donc que le mode <i>shadow copy</i> ?</h2>
+  <h2>Qu'est-ce donc que le <i>mode discret</i> ?</h2>
   <p>Généralement, DynImg fonctionne très bien en mode par défaut. Dans le mode par défaut, DynImg procède à une simple redirection HTTP vers vos liens, à chaque chargement de voytre image dynamique.</p>
   <p>Parfois, vous pouvez avoir besoin de quelque chose de plus robuste ou de plus "caché". En mode shadow copy, DynImg copiera les données internes de voytre image en temps réel, pour les retourner sans procéder à une redirection. C'est plus lent et moins efficace, mais ça peut être utile dans certains cas.</p>
 
   <h2>Statiques</h2>
   <p>Nous avons {{ registeredImgs }} images dynamiques enregistrées, liées à {{ registeredUrls }} adresses statiques.</p>
-  <p>{{ displayedImgs }} images dynamiques ont été affichées en {{ processingTime }} de temps total.</p>
+  <p>{{ displayedImgs }} images dynamiques ont été affichées par nos services.</p>
 
   <h2>Propulsé par</h2>
-  <p>Python | Django | MySQL | PythonAnywhere | HTML5 | CSS3</p>
+  <p>Python | Django | PostgreSQL | HTML5 | CSS3</p>
 {% endblock %}
