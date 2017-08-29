@@ -1,0 +1,24 @@
+body { max-width: 1000px }
+
+blockquote {margin: 10vh 1vw}
+
+#quote {
+    font-size: 5vw;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    text-align: initial;
+}
+@media (min-width: 1000px) {
+    #quote { font-size: 50px }
+}
+@media (max-width: 600px) {
+    #quote { font-size: 30px }
+}
+
+#meta {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.button a { font-size: 4rem }
+.button:first-of-type a { float: right }
+.button a:link, .button a:visited { color: inherit }

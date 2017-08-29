@@ -1,0 +1,16 @@
+{% extends "quotes/base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+  <blockquote>
+    <p id="quote">{{ quote.text }}</p>
+  </blockquote>
+  <p id="meta">{{ quote.author }}, {{ quote.year }}.</p>
+  <div class="button">
+    <a href="{% url 'quotes:main' %}" title="Afficher une autre citation"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+  </div>
+  <div class="button">
+    <a href="{{ quote.get_absolute_url }}" title="Lien vers cette citation (clic doit/copier adresse)"><i class="fa fa-link" aria-hidden="true"></i></a>
+  </div>
+{% endblock %}
