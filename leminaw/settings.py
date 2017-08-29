@@ -41,7 +41,8 @@ INSTALLED_APPS = (
     'playel',
     'profs',
     'perso',
-    'avatar'
+    'avatar',
+    'quotes'
 )
 
 MIDDLEWARE = (
@@ -56,6 +57,8 @@ MIDDLEWARE = (
 )
 
 ROOT_URLCONF = 'leminaw.urls'
+
+APPEND_SLASH = True
 
 TEMPLATES = [
     {

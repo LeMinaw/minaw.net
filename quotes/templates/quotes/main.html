@@ -1,0 +1,11 @@
+{% extends "quotes/base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+  <blockquote>
+    <p id="quote">{{ quote.text }}</p>
+  </blockquote>
+  <p id="meta">{{ quote.author }}, {{ quote.year }}.</p>
+  <a href="{% url 'quotes:main' %}">Une autre !</a>
+{% endblock %}
