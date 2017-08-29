@@ -32,6 +32,9 @@ code {
     box-sizing: border-box;
     border-radius: 3px;
 }
+blockquote {
+    font-style: italic;
+}
 #content { margin: 20px }
 
 /* FORMS */
