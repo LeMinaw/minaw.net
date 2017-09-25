@@ -7,7 +7,7 @@ from django.contrib          import admin
 from perso.views             import create_error_view
 
 urlpatterns = [
-    url(r'^admin/?',  admin.site.urls),
+    url(r'^admin/',   admin.site.urls),
     url(r'^namegen/', include("namegen.urls")),
     url(r'^dynimg/',  include("dynimg.urls")),
     url(r'^playel/',  include("playel.urls")),
