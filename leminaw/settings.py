@@ -23,11 +23,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "minaw.herokuapp.com", ".minaw.net", ".amazonaws.com"]
 
-CSRF_COOKIE_DOMAIN = ".minaw.net"
-
 CSRF_COOKIE_AGE = None
 
-CSRF_USE_SESSIONS = True
+CSRF_USE_SESSIONS = False
 
 
 # Application definition
