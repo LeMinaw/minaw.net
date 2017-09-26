@@ -10,10 +10,10 @@ class ModuleAdmin(admin.ModelAdmin):
         else:
             return module.content
 
-    list_display   = ('__str__', 'short_content', 'added', 'modif')
+    list_display   = ('__str__', 'active', 'short_content', 'added', 'modif')
     list_filter    = ('semester', 'subject', 'teacher', 'active')
     date_hierarchy = 'added'
-    ordering       = ('added',)
+    ordering       = ('-added',)
     search_fields  = ('content',)
     save_as = True
 
@@ -43,7 +43,7 @@ class TeacherAdmin(admin.ModelAdmin):
     search_fields  = ('name',)
 
     class Media:
-        js = ('https://code.jquery.com/jquery-2.1.1.min.js', '/static/profs/js/completion.js')
+        js = ('https://code.jquery.com/jquery-2.1.1.min.js', 'profs/js/completion.js')
 
 
 class CommentAdmin(admin.ModelAdmin):

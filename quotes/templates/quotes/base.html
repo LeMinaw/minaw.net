@@ -1,0 +1,37 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="Author" content="LeMinaw">
+    <meta name="Keywords" content="quotes,citations">
+    <meta name="Description" content="Des citations désopilantes.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"       href="{% static 'quotes/img/favicon.png' %}" type="icon/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="{% static 'leminaw/css/minaw-css.css' %}">
+    <link rel="stylesheet" href="{% static 'quotes/css/base.css' %}">
+    <title>Citations</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Citations</h1>
+    </header>
+
+    <section id="content">
+      {% block content %}{% endblock %}
+    </section>
+
+    <footer>
+      <p>Une appli web par <a href="{% url "perso:main" %}">LeMinaw</a>.</p>
+      <p>Licence CC BY-NC-SA 2.0</p>
+      <p>- 2017 -</p>
+    </footer>
+
+    <script src="https://use.fontawesome.com/329a4b4215.js"></script>
+  </body>
+
+</html>

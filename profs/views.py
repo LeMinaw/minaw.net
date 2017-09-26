@@ -1,10 +1,10 @@
 #-*- coding: utf-8 -*-
-
-from django.shortcuts import render
-from django.http      import HttpResponse
-from profs.models     import *
-from profs.forms      import *
-from profs.processing import *
+from django.views.decorators.csrf import ensure_csrf_cookie, requires_csrf_token
+from django.shortcuts             import render
+from django.http                  import HttpResponse
+from profs.processing             import *
+from profs.models                 import *
+from profs.forms                  import *
 
 
 def main(request):
@@ -19,6 +19,9 @@ def contact(request):
     return render(request, "profs/contact.html", locals())
 
 
+
+@requires_csrf_token
+@ensure_csrf_cookie
 # @vary_on_headers('HTTP_X_REQUESTED_WITH') # Needed when using caching
 def modules(request):
     displayedModules = Module.objects.all()

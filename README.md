@@ -25,3 +25,7 @@ Top-secret project !
 ## Profs
 
 Website for giving feedbacks about some teachers in my school.
+
+## Quotes
+
+Super-simple quotes app.

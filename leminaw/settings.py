@@ -23,7 +23,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "minaw.herokuapp.com", ".minaw.net", ".amazonaws.com"]
 
-CSRF_COOKIE_DOMAIN = ".minaw.net"
+CSRF_COOKIE_AGE = None
+
+CSRF_USE_SESSIONS = False
 
 
 # Application definition
@@ -43,7 +45,8 @@ INSTALLED_APPS = (
     'playel',
     'profs',
     'perso',
-    'avatar'
+    'avatar',
+    'quotes'
 )
 
 MIDDLEWARE = (
@@ -58,6 +61,8 @@ MIDDLEWARE = (
 )
 
 ROOT_URLCONF = 'leminaw.urls'
+
+APPEND_SLASH = True
 
 TEMPLATES = [
     {

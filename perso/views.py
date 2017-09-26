@@ -3,7 +3,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts      import render, render_to_response
 from django.template       import RequestContext
-from django.http           import HttpResponse, Http404
+from django.http           import HttpResponse, HttpResponseRedirect, Http404
 from random                import choice, sample
 from math                  import ceil
 from perso.forms           import *
@@ -24,9 +24,6 @@ def page_contains(paginator, element):
 
 
 def main(request, pageId=1, cat_slug=None):
-    barItems     = Category.objects.filter(menu=True)
-    moreBarItems = Category.objects.filter(menu=False)
-
     if cat_slug is None:
         publications = Publication.objects.filter(pin=True)
         coverImage = choice(Cover.objects.filter(pin=True))
@@ -34,12 +31,19 @@ def main(request, pageId=1, cat_slug=None):
         try:
             categ = Category.objects.get(slug=cat_slug)
         except Category.DoesNotExist:
-            raise Http404()
+            if request.path.endswith('/'): # It's possible that the user requested another app without the trailing slash (minaw.net/profs)
+                raise Http404()
+            else:
+                return HttpResponseRedirect(request.get_full_path() + '/')
+
         publications = Publication.objects.filter(categ=categ)
         try:
             coverImage = choice(publications.exclude(cover=None).filter(cover__pin=True)).cover
         except IndexError:
             coverImage = choice(Cover.objects.filter(pin=True))
+
+    barItems     = Category.objects.filter(menu=True)
+    moreBarItems = Category.objects.filter(menu=False)
 
     paginator = Paginator(publications, 3)
     page = paginator.page(pageId)
@@ -127,7 +131,7 @@ def contact(request):
     coverImage = choice(Cover.objects.filter(pin=True))
 
     return render(request, "perso/contact.html", locals())
-    
+
 
 def create_error_view(code):
     def error_view(request, *args, **kwargs):
