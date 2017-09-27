@@ -7,14 +7,15 @@ from django.contrib          import admin
 from perso.views             import create_error_view
 
 urlpatterns = [
-    url(r'^admin/',   admin.site.urls),
-    url(r'^namegen/', include("namegen.urls")),
-    url(r'^dynimg/',  include("dynimg.urls")),
-    url(r'^playel/',  include("playel.urls")),
-    url(r'^profs/',   include("profs.urls")),
-    url(r'^avatar/',  include("avatar.urls")),
-    url(r'^quotes/',  include("quotes.urls")),
-    url(r'^',         include("perso.urls")),
+    url(r'^admin/',    admin.site.urls),
+    url(r'^namegen/',  include("namegen.urls")),
+    url(r'^dynimg/',   include("dynimg.urls")),
+    url(r'^playel/',   include("playel.urls")),
+    url(r'^profs/',    include("profs.urls")),
+    url(r'^avatar/',   include("avatar.urls")),
+    url(r'^quotes/',   include("quotes.urls")),
+    url(r'^register/', include("register.urls")),
+    url(r'^',          include("perso.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler400 = create_error_view(code=400)
