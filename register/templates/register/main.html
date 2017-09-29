@@ -16,26 +16,36 @@
   </head>
 
   <body>
-    <h1>Skywanderers registration</h1>
-    <h2>Welcome on the Skywanderers registration system.</h2>
-    <p>If you supported the game on Kickstarter, this allows you to get your special rank on our forums.</p>
-    <p>If you do not have an account yet, please create one on <a href="https://www.skywanderersgame.com/forum/">the official forums</a> first.</p>
-    <p>Then, just enter your forum username and your personal activation code here.</p>
+    <h1>skywanderers</h1>
+    <h2>Registration</h2>
+    <h3>Welcome on the Skywanderers registration system.</h3>
+    <div class="card">
+      <p>If you supported the game on Kickstarter, this allows you to get your special rank on our forums.</p>
+      <p>If you do not have an account yet, please create one on <a href="https://www.skywanderersgame.com/forum/">the official forums</a> first.</p>
+      <p>Then, just enter your forum username and your personal activation code here.</p>
 
-    <form action="{% url "register:main" %}" method="post">
-      {% csrf_token %}
-      {% for field in form %}
-        {{ field.label_tag }} {{ field }}
-        <br>
-        {{ field.errors }}
-      {% endfor %}
-      {{ form.non_field_errors }}
-      <input type="submit" value="Submit"/>
-    </form>
+      <form action="{% url "register:main" %}" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+          {{ field.label_tag }} {{ field }}
+          <br>
+          {{ field.errors }}
+        {% endfor %}
+        {{ form.non_field_errors }}
+        <div class="center">
+          <input type="submit" value="Submit"/>
+        </div>
+      </form>
 
-    <p class="error">{{ error }}</p>
-    {% if success %}
-      <p class="success">Congratulations! Your rank is now sucessfully activated. It should take about 24 hours for modifications to be effective.</p>
-    {% endif %}
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+      {% if success %}
+        <p class="success">Congratulations! Your rank is now sucessfully activated.</p>
+      {% endif %}
+    </div>
+    <footer>
+      <p>Designed and programmed by <a href="http://www.minaw.net">Le minaw</a>.</p>
+    </footer>
   </body>
 </html>

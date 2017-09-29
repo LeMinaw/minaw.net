@@ -47,7 +47,7 @@ INSTALLED_APPS = (
     'perso',
     'avatar',
     'quotes',
-    'registers',
+    'register',
 )
 
 MIDDLEWARE = (

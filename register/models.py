@@ -1,7 +1,7 @@
 from django.db import models
 
 class ActivationCode(models.Model):
-    code   = models.TextField(max_lenght=255, blank=false, unique=True)
+    code   = models.CharField(max_length=255, blank=False, unique=True)
     rank   = models.PositiveSmallIntegerField(default=0)
     active = models.BooleanField(default=False)
     modif  = models.DateField(auto_now=True)
@@ -10,7 +10,7 @@ class ActivationCode(models.Model):
         return self.code
 
 class Member(models.Model):
-    username  = models.TextField(max_lenght=255, unique=True)
+    username  = models.CharField(max_length=255, unique=True)
     user_rank = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
