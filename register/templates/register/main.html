@@ -1,0 +1,51 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="Author" content="LeMinaw">
+    <meta name="Description" content="Skywanderers forum rank registration">
+
+    <link rel="icon" type="image/png" href="{% static 'register/img/favicon.png' %}"/>
+    <link rel="stylesheet" href="{% static 'register/css/base.css' %}" type="text/css"/>
+
+    <title>Skywanderers registration</title>
+  </head>
+
+  <body>
+    <h1>skywanderers</h1>
+    <h2>Registration</h2>
+    <h3>Welcome on the Skywanderers registration system.</h3>
+    <div class="card">
+      <p>If you supported the game on Kickstarter, this allows you to get your special rank on our forums.</p>
+      <p>If you do not have an account yet, please create one on <a href="https://www.skywanderersgame.com/forum/">the official forums</a> first.</p>
+      <p>Then, just enter your forum username and your personal activation code here.</p>
+
+      <form action="{% url "register:main" %}" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+          {{ field.label_tag }} {{ field }}
+          <br>
+          {{ field.errors }}
+        {% endfor %}
+        {{ form.non_field_errors }}
+        <div class="center">
+          <input type="submit" value="Submit"/>
+        </div>
+      </form>
+
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+      {% if success %}
+        <p class="success">Congratulations! Your rank is now sucessfully activated.</p>
+      {% endif %}
+    </div>
+    <footer>
+      <p>Designed and programmed by <a href="http://www.minaw.net">Le minaw</a>.</p>
+    </footer>
+  </body>
+</html>

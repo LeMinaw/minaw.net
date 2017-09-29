@@ -54,7 +54,7 @@ class CommentAdmin(admin.ModelAdmin):
             return module.content
 
     list_display   = ('__str__', 'validated', 'author', 'short_content', 'added', 'modif')
-    list_filter    = ('module',)
+    list_filter    = ('module', 'validated')
     date_hierarchy = 'added'
     ordering       = ('-validated', 'added')
     search_fields  = ('name', 'content')
