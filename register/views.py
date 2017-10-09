@@ -53,7 +53,7 @@ def main(request):
 def load(request):
     if environ.get("LOAD_KEYS") == 'TRUE':
         for code, rank in ACTIVATION_KEYS.items():
-            activation_code = ActivationCode(code=code, rank=rank, active=True)
+            activation_code = ActivationCode(code=code, rank=rank, active=True, active_disc=True)
             try:
                 activation_code.save()
             except IntegrityError:
