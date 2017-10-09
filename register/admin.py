@@ -14,6 +14,10 @@ class MemberAdmin(admin.ModelAdmin):
     list_filter    = ('user_rank',)
     search_fields  = ('username',)
 
+class DiscordMemberAdmin(MemberAdmin):
+    list_display   = ('__str__', 'user_rank', 'user_id')
+
 
 admin.site.register(ActivationCode, ActivationCodeAdmin)
 admin.site.register(Member, MemberAdmin)
+admin.site.register(DiscordMember, DiscordMemberAdmin)
