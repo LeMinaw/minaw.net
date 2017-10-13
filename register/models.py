@@ -17,5 +17,10 @@ class Member(models.Model):
     def __str__(self):
         return self.username
 
-class DiscordMember(Member):
-    user_id = models.PositiveIntegerField
+class DiscordMember(models.Model):
+    user_id   = models.BigIntegerField(unique=True)
+    username  = models.CharField(max_length=255, unique=True)
+    user_rank = models.PositiveSmallIntegerField(default=0)
+
+    def __str__(self):
+        return self.username
