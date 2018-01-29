@@ -1,5 +1,5 @@
 #-*- coding: utf-8 -*-
-from django.views.decorators.csrf import ensure_csrf_cookie, requires_csrf_token
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts             import render
 from django.http                  import HttpResponse
 from profs.processing             import *
@@ -19,9 +19,7 @@ def contact(request):
     return render(request, "profs/contact.html", locals())
 
 
-
-@requires_csrf_token
-@ensure_csrf_cookie
+@csrf_exempt
 # @vary_on_headers('HTTP_X_REQUESTED_WITH') # Needed when using caching
 def modules(request):
     displayedModules = Module.objects.all()
@@ -65,6 +63,7 @@ def modules(request):
     return render(request, "profs/modules.html", locals())
 
 
+@csrf_exempt
 def module(request, semester, subject, teacher):
     semester = Semester.objects.get(slug=semester)
     subject  = Subject.objects.get(slug=subject)
