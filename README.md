@@ -4,7 +4,7 @@ This repo contains several personal web projects, mainly using the Django framew
 
 ## Perso
 
-My personal website.
+My personal blog.
 
 ## Avatar
 
