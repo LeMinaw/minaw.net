@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
@@ -81,21 +82,21 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='module',
             name='semester',
-            field=models.ForeignKey(verbose_name=b'semestre', to='profs.Semester'),
+            field=models.ForeignKey(verbose_name=b'semestre', to='profs.Semester', on_delete=django.db.models.deletion.CASCADE),
         ),
         migrations.AddField(
             model_name='module',
             name='subject',
-            field=models.ForeignKey(verbose_name=b'mati\xc3\xa8re', to='profs.Subject'),
+            field=models.ForeignKey(verbose_name=b'mati\xc3\xa8re', to='profs.Subject', on_delete=django.db.models.deletion.CASCADE),
         ),
         migrations.AddField(
             model_name='module',
             name='teacher',
-            field=models.ForeignKey(verbose_name=b'enseignant', to='profs.Teacher'),
+            field=models.ForeignKey(verbose_name=b'enseignant', to='profs.Teacher', on_delete=django.db.models.deletion.CASCADE),
         ),
         migrations.AddField(
             model_name='comment',
             name='module',
-            field=models.ForeignKey(related_name='comments', verbose_name=b'module', to='profs.Module'),
+            field=models.ForeignKey(related_name='comments', verbose_name=b'module', to='profs.Module', on_delete=django.db.models.deletion.CASCADE),
         ),
     ]
