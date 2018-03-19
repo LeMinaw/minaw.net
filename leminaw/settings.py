@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'avatar',
     'quotes',
     'register',
+    'portfolio'
 )
 
 MIDDLEWARE = (

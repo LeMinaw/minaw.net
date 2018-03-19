@@ -6,6 +6,10 @@ This repo contains several personal web projects, mainly using the Django framew
 
 My personal blog.
 
+## Portfolio
+
+My portfolio.
+
 ## Avatar
 
 Procedural avatar generator.

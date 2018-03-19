@@ -1,0 +1,35 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+  <div class="background">
+    <img src="{{ work_cover.cover.url }}" alt=""/>
+  </div>
+
+  <div class="content work">
+    <h2>Labs</h2>
+    <h3>I've experiments to run...</h3>
+    <p>Here you can find some small web applications I host on this server.</p>
+    <p>They were mainly done for exercising or experimenting, but they may be able to occupy you for a few minutes.</p>
+    <ul>
+      <li><b><a href="{% url 'avatar:main' %}">Avatar</a></b> is a procedural geometric avatar generator. It was designed to provide guest profile pics on my blog. It features a basic request API and Disqus integration.</li>
+      <li><b><a href="{% url 'dynimg:main' %}">DynImg</a></b> is a dynamic image linker. It basically links several pictures to one URL by randomly choosing one each time the URL is called.</li>
+      <li><b><a href="{% url 'namegen:main' %}">NameGen</a></b> is a simple online fantasy name generator based on phonemes concatenation.</li>
+      <li><b><a href="{% url 'quotes:main' %}">Quotes</a></b> is just a quotes app for fun.</li>
+    </ul>
+    <h3>...there is research to be done...</h3>
+    <p>A few other projects are also hosted here, although they come out of the 'labs' category:</p>
+    <ul>
+      <li>The <b><a href="{% url 'profs:main' %}">ENSAPLV teachings exchange platform</a></b>, intended for students to share their advises on their teachings,</li>
+      <li>The <b><a href="{% url 'profs:main' %}">Skywanderers registration app</a></b>, allowing <a href="http://www.skywanderersgame.com">Skywanderers</a> backers to redeem their rank on the game's official forums.</li>
+    </ul>
+    <h3>...on the people who are...</h3>
+    <p>My other web projects in a nutshell:</p>
+    <ul>
+      <li>The <b><a href="http://www.skywanderersgame.com">Skywanderers</a></b> official website,</li>
+      <li>The <b><a href="http://www.skywanderersgame.com/forum/">Skywanderers officials forums</a></b> theme,</li>
+      <li><b><a href="DarkMCFR">DarkMCFR</a></b>, a userstyle for a XenForo bulletin board.</li>
+    </ul>
+    <p>You can also browse through various stuff on my <b><a href="https://github.com/LeMinaw">GitHub profile</a></b> if you have insomnia.</p>
+    <h3>...still alive!</h3>
+  </div>
+{% endblock content %}

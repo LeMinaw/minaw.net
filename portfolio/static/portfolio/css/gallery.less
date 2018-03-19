@@ -1,0 +1,82 @@
+.scroll {
+
+    /* COMMON */
+
+    .imgcontainer {
+        position: relative;
+
+        img { width: 100% }
+
+        .legend {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            padding: 6px 0;
+            text-align: center;
+            background: @black;
+
+            span {
+                font-weight: 200;
+                color: @white;
+            }
+        }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: @small) {
+        position: static;
+
+        .content .imgcontainer {
+            position: relative;
+            margin: 10px 0;
+        }
+    }
+
+    /* DESKTOP */
+
+    @media (min-width: @small) {
+        position: fixed;
+
+        &.title {
+            top: 10vh;
+
+            #name {
+                position: absolute;
+                left: 10vw;
+                line-height: 0;
+            }
+        }
+
+        &.wrapper {
+            top: 25vh;
+            width: 100%;
+        }
+    }
+
+    .content {
+        position: absolute;
+        left: 0;
+
+        .imgcontainer {
+            display: inline-block;
+            height: 200px;
+            margin: 4px 6px;
+            transform: scale(1, 1);
+            transition: all .1s;
+            .gentle-shadow(0);
+
+            &:hover {
+                transform: scale(1.5, 1.5);
+                transition: all .3s;
+                z-index: 1000;
+                .gentle-shadow(.5);
+            }
+
+            img {
+                height: 200px;
+                object-fit: cover;
+            }
+        }
+    }
+}

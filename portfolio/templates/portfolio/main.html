@@ -1,0 +1,32 @@
+{% extends "portfolio/base.html" %}
+
+{% block bodyparams %}
+  class="hscroll"
+{% endblock bodyparams %}
+
+{% block content %}
+  <div class="background scroll">
+    <img src="{{ work_cover.cover.url }}" alt=""/>
+  </div>
+
+  <div class="title scroll">
+    <div id="name">
+      <h1 class="{% if not work_cover.black_txt %}white{% endif %}">leminaw // renaud perrin</h1>
+    </div>
+  </div>
+
+  <div class="wrapper scroll">
+    <div class="content">
+      {% for work in works %}
+        <div class="imgcontainer">
+          <a href="{{ work.get_absolute_url }}">
+            <img src="{{ work.cover.url }}" alt="{{ work.name }}">
+            <div class="legend">
+              <span>{{ work.title }}</span>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}

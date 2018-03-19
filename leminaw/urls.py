@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^quotes/',   include("quotes.urls")),
     url(r'^register/', include("register.urls")),
     url(r'^blog/',     include("perso.urls")),
+    url(r'^',          include("portfolio.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler400 = create_error_view(code=400)

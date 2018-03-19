@@ -1,0 +1,20 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+  <div class="background">
+    <img src="{{ work_cover.cover.url }}" alt=""/>
+  </div>
+
+  <div class="content work">
+    <h2>leminaw // renaud perrin :: {{ work.title }}</h2>
+    <img src="{{ work.cover.url }}" alt="{{ work.title }}"/>
+    <h3>{{ work.subtitle }}</h3>
+    <p>{{ work.content }}</p>
+
+    <div class="categs">
+      {% for w_categ in work_categs %}
+        <a href="{{ w_categ.get_absolute_url }}">{{ w_categ.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}

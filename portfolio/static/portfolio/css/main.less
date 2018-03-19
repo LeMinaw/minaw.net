@@ -1,0 +1,185 @@
+// out: main.css, sourcemap: false, compress: true
+
+@import "gallery";
+@import "utils";
+
+/* VARS */
+
+@white: rgb(245, 245, 245);
+@black: rgba(0, 0, 0, .85);
+@links: rgb(10, 104, 145);
+@small: 768px;
+@font-head: 'Poiret One', cursive;
+@font-main: 'Comfortaa',  cursive;
+
+/* MIXINS */
+
+.gentle-shadow (@opac) {
+    .box-shadow(1px 3px 10px -2px rgba(.5, .5, .5, @opac));
+}
+
+.underline {
+    position: relative;
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 6px;
+        left: 18px;
+        background: @white;
+        visibility: hidden;
+        border-radius: 5px;
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: all .08s;
+    }
+    &:hover:after, &:focus:after {
+        visibility: visible;
+        transform: scaleX(1);
+        transition: all .15s;
+    }
+}
+
+/* PAGE */
+
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: @font-main;
+    font-size: 16px;
+    // hide horizontal scrollbars, since vertical ones scroll horizontaly
+    &.hscroll { overflow-x: hidden }
+}
+
+h1, h2, h3 { font-family: @font-head }
+h1 {
+    font-size: 72px;
+    @media (max-width: @small) {
+        margin: 10px;
+        text-align: center;
+    }
+}
+h2 { font-size: 32px }
+h3 { font-size: 24px; font-weight: lighter}
+
+a {
+    text-decoration: none;
+    color: @links;
+    &:hover { text-decoration: underline }
+}
+.white a { color: @links + #444 }
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 70px;
+    width: 100%;
+    background: @black;
+    z-index: 1000;
+    border-bottom: 1px solid #000;
+    .gentle-shadow(.5);
+
+    a {
+        display: inline-block;
+        padding: 11px 20px;
+        font-size: 32px;
+        font-weight: 600;
+        font-family: @font-head;
+        color: @white;
+        .underline;
+        &:hover { text-decoration: none }
+        &.active { text-decoration: overline !important }
+    }
+    .smallnav { display: none }
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    margin-bottom: 12px;
+    font-size: 14px;
+    div { text-align: center }
+}
+.work + footer { position: static }
+
+.background {
+    @media (max-width: @small) { display: none }
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    .vignette(0px 0px 300px -50px @black);
+
+    img {
+        height: 100vh;
+        width: 100vw;
+        object-fit: cover;
+        .blur(8px);
+    }
+}
+
+.title {
+    width: 100%;
+    z-index: 2;
+    height: auto;
+}
+
+.content {
+    z-index: 5;
+    padding: 0 10px;
+
+    @media (min-width: @small) {
+        padding: 6px;
+        background: @white;
+        border: 1px @white - #111 solid;
+        .gentle-shadow(.5);
+    }
+}
+
+.work {
+    max-width: 1280px;
+    margin: 100px auto 70px auto;
+
+    h2 { margin: 10px auto 16px 42px }
+    h3 {
+        display: block;
+        text-align: center;
+    }
+
+    img { width: 100% }
+
+    p, li {
+        max-width: @small;
+        margin: 10px auto;
+    }
+
+    .categs {
+        text-align: right;
+        margin: 0 10px 26px 0;
+
+        a {
+            position: relative;
+            bottom: 0;
+            margin: 10px;
+            padding: 6px 15px;
+            background: @black;
+            color: @white;
+            .gentle-shadow(0);
+            transition: all .08s;
+
+            &:hover, &:focus {
+                text-decoration: none;
+                margin: 10px 10px - 10px;
+                padding: 6px 15px + 10px;
+                bottom: 2px;
+                .gentle-shadow(.4);
+                transition: all .15s;
+            }
+        }
+    }
+}
+
+.white { color: @white }

@@ -16,6 +16,7 @@ staticfiles/
 media/
 *.sqlite3
 *.old
+__javascript__/
 
 # Security secrets
 settingsprod.py
