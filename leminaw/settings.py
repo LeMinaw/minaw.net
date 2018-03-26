@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'storages',
     'django_markwhat',
+    'sorl.thumbnail',
+
     'namegen',
     'dynimg',
     'playel',

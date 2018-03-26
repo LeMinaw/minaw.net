@@ -1,15 +1,13 @@
 {% extends "portfolio/base.html" %}
 
-{% block content %}
-  <div class="background">
-    <img src="{{ work_cover.cover.url }}" alt=""/>
-  </div>
+{% load markup %}
 
+{% block content %}
   <div class="content work">
     <h2>leminaw // renaud perrin :: {{ work.title }}</h2>
     <img src="{{ work.cover.url }}" alt="{{ work.title }}"/>
     <h3>{{ work.subtitle }}</h3>
-    <p>{{ work.content }}</p>
+    <span>{{ work.content|commonmark }}</span>
 
     <div class="categs">
       {% for w_categ in work_categs %}

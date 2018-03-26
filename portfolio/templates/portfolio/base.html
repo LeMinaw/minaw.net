@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load thumbnail %}
 
 <!doctype html>
 <html lang="fr">
@@ -24,6 +25,12 @@
         <a class="{% if baritem == categ %}active{% endif %}" href="{{ baritem.get_absolute_url }}">{{ baritem.name }}</a>
       {% endfor %}
     </header>
+
+    <div {% block bckparams %}class="background"{% endblock%}>
+      {% thumbnail work_cover.cover "x300" as thumb %}
+        <img src="{{ thumb.url }}" alt="{{ work_cover.name }}">
+      {% endthumbnail %}
+    </div>
 
     {% block content %}{% endblock %}
 
