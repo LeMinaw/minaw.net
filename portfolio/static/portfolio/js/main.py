@@ -7,7 +7,11 @@ def on_scroll(percent):
     S("#name").css('opacity', str(opac))
 
 def start():
-    hscroll = S.jInvertScroll(['.scroll'], {'onScroll': on_scroll})
+    hscroll = S.jInvertScroll(['.scroll'], {
+        'width':  'auto',
+        'height': 'auto',
+        'onScroll': on_scroll
+    })
     gallery = Gallery(S(".imgcontainer"))
 
     if S(window).width() <= 768:

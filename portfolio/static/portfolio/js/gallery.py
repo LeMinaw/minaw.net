@@ -62,7 +62,7 @@ class Gallery:
 
         # Set container width
         self.parent.style.width = to_px(avg_width + 1) # Avoids rounding problems
-        print(to_px(avg_width))
+        self.parent.parentNode.style.width = to_px(avg_width + 13)
 
     def destroy(self):
         self.reset_widths()
