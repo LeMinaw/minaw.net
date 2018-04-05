@@ -5,12 +5,13 @@ from django.urls import reverse
 class Work(Model):
     added     = DateTimeField(auto_now_add=True,        verbose_name="ajouté")
     modif     = DateTimeField(auto_now=True,            verbose_name="modifié")
-    slug      = SlugField(                              verbose_name="identifiant")
+    slug      = SlugField(unique=True,                  verbose_name="identifiant")
     title     = CharField(max_length=64,                verbose_name="titre")
     subtitle  = CharField(max_length=128,   blank=True, verbose_name="sous-titre")
     cover     = ImageField(                             verbose_name="couverture")
     content   = TextField(                  blank=True, verbose_name="contenu")
     bck       = BooleanField(default=False,             verbose_name="arrière-plan")
+    pin       = BooleanField(default=False,             verbose_name="épinglé")
     black_txt = BooleanField(default=False,             verbose_name="texte noir")
     categ     = ManyToManyField('Category', blank=True, verbose_name="catégorie")
 
@@ -22,7 +23,7 @@ class Work(Model):
 
     class Meta:
         verbose_name = "oeuvre"
-        ordering = ['-added']
+        ordering = ['-pin', '-added']
 
 
 class Category(Model):
