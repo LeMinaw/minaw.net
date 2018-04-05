@@ -18,18 +18,20 @@
   </div>
 
   <div class="wrapper scroll">
-    <div class="content">
+    <div id="gallery" class="content">
       {% for work in works %}
         <div class="imgcontainer">
-          <a href="{{ work.get_absolute_url }}">
-            {% thumbnail work.cover "x300" as thumb %}
-              <img src="{{ thumb.url }}" alt="{{ work.name }}">
-            {% endthumbnail %}
+          <div class="img">
+            <a href="{{ work.get_absolute_url }}">
+              {% thumbnail work.cover "x300" as thumb %}
+                <img src="{{ thumb.url }}" alt="{{ work.name }}">
+              {% endthumbnail %}
 
-            <div class="legend">
-              <span>{{ work.title }}</span>
-            </div>
-          </a>
+              <div class="legend">
+                <span>{{ work.title }}</span>
+              </div>
+            </a>
+          </div>
         </div>
       {% endfor %}
     </div>

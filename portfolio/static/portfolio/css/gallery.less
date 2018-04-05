@@ -60,22 +60,25 @@
 
         .imgcontainer {
             display: inline-block;
-            height: 200px;
-            margin: 4px 6px;
-            transform: scale(1, 1);
-            transition: all .1s;
-            .gentle-shadow(0);
+            padding: 6px;
+            .box-sizing(border-box);
 
-            &:hover {
-                transform: scale(1.5, 1.5);
-                transition: all .3s;
-                z-index: 1000;
-                .gentle-shadow(.5);
-            }
+            .img {
+                transform: scale(1, 1);
+                transition: all .1s;
+                .gentle-shadow(0);
 
-            img {
-                height: 200px;
-                object-fit: cover;
+                &:hover {
+                    transform: scale(1.5, 1.5);
+                    transition: all .3s;
+                    z-index: 1000;
+                    .gentle-shadow(.5);
+                }
+
+                img {
+                    height: 200px;
+                    object-fit: cover;
+                }
             }
         }
     }

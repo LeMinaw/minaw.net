@@ -1,0 +1,6 @@
+[
+  {
+    "files": "**/*.py",
+    "command": "transcrypt -m main.py && copy /Y .\\__javascript__\\main.min.js .\\main.min.js"
+  }
+]
