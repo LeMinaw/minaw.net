@@ -3,8 +3,8 @@ from portfolio.models import *
 
 
 class WorkAdmin(admin.ModelAdmin):
-    list_display        = ('__str__', 'bck', 'slug', 'added')
-    list_filter         = ('categ', 'bck')
+    list_display        = ('__str__', 'pin', 'bck', 'slug', 'added')
+    list_filter         = ('categ', 'pin', 'bck')
     date_hierarchy      = 'added'
     ordering            = ('slug', 'title')
     search_fields       = ('title', 'subtitle', 'content')
