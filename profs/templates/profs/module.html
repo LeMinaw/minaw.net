@@ -18,6 +18,7 @@
 
     <br/>
     <h4>Commentaires d'étudiants</h4>
+    {% comment %}
     {% for comment in comments %}
         <div class="card">
             <div class="card-content">
@@ -28,6 +29,8 @@
     {% empty %}
         <p class="flow-text">Aucun commentaire pour le moment. :'(</p>
     {% endfor %}
+    {% endcomment %}
+    <p class="flow-text">L'accès aux commentaires est suspendu.</p>
 
     <br/>
     <h4>Partagez votre expérience !</h4>
