@@ -10,6 +10,8 @@
 
 {% block body %}
     <h2>Liste des modules</h2>
+    <p class="flow-text">L'accès à la plateforme a été suspendu. Pour plus d'informations à ce sujet, utilisez l'onglet Contact.</p>
+    {% comment %}
     <form id="form" class="row" action="{% url 'profs:modules' %}" method="post">
         {% csrf_token %}
         {% for field in form %}
@@ -37,4 +39,5 @@
             <li class="collection-item">Aucun résultat trouvé. :'(</li>
         {% endfor %}
     </div>
+    {% endcomment %}
 {% endblock %}

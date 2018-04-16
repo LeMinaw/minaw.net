@@ -10,6 +10,8 @@
 
 {% block body %}
     <h2>Plateforme d'échange</h2>
+    <p class="flow-text">L'accès à la plateforme a été suspendu. Pour plus d'informations à ce sujet, utilisez l'onglet Contact.</p>
+    {% comment %}
     <p class="flow-text">Bienvenue sur la plate forme d'échanges inter-étudiants concernant les enseignements de l'ENSAPLV. <a href="{% url 'profs:modules' %}">Cliquez ici</a> pour commencer.</p>
     <h4>Super ! Qu'est ce que c'est ?</h2>
     <p class="flow-text">Ce site permet de consulter les programmes de différents modules d'enseignement, mais aussi de consulter et de lire des retours, des conseils ou des remarques d'étudiants concernants des enseignements particuliers.</p>
@@ -19,4 +21,5 @@
     <p class="flow-text">...que rien ne vaut le rapport humain : ce site n'est pas là pour remplacer les conversations que vous pourriez avoir avec des étudiants.</p>
     <p class="flow-text">...que ce site n'est pas officiel : c'est un travai personnel, aucunement rattaché à l'ENSAPLV.</p>
     <p class="flow-text">...qu'il est inutile de prendre ça trop à coeur : le tirage au sort est quand même très aléatoire !</p>
+    {% endcomment %}
 {% endblock %}
