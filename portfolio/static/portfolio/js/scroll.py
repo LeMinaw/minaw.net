@@ -1,6 +1,4 @@
-def to_px(val):
-    """Returns px string value from int: 45 -> '45px'"""
-    return f"{val}px"
+from utils import *
 
 class Scroller:
     def __init__(self, select, width=None, height=None, callback=None):
