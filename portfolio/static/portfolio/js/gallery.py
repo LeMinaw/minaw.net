@@ -1,11 +1,11 @@
-__pragma__('alias', 'S', '$')
-
 from utils import *
 
 class Gallery:
-    def __init__(self, pics):
-        self.pics = pics
-        self.parent = pics[0].parentNode
+    def __init__(self, selector):
+        """<selector> must be a css selector that matches each pic of the
+        Gallery."""
+        self.pics = [pic for pic in document.querySelectorAll(selector)]
+        self.parent = self.pics[0].parentNode
         self.init_widths = None # Will be populated by first call of draw()
 
     def reset_widths(self):
@@ -33,7 +33,7 @@ class Gallery:
         for row, width in zip(self.rows, widths):
             ratio = avg_width / width
             for pic in row:
-                w = from_px(S(pic).css("width"))
+                w = from_px(pic.style.width)
                 w *= ratio
                 pic.style.width = to_px(w)
 
@@ -41,16 +41,17 @@ class Gallery:
         empty(self.parent)
         for row in self.rows:
             for pic in row:
-                S(self.parent).append(pic)
-            S(self.parent).append("<br/>")
+                self.parent.appendChild(pic)
+            br = document.createElement("br")
+            self.parent.appendChild(br)
 
         # Set container width
         self.parent.style.width = to_px(avg_width + 1) # Avoids rounding problems
-        self.parent.parentNode.style.width = to_px(avg_width + 13)
+        self.parent.parentNode.style.width = to_px(avg_width + 12 + 1)
 
     def destroy(self):
         self.reset_widths()
 
         empty(self.parent)
         for pic in self.pics:
-            S(self.parent).append(pic)
+            self.parent.appendChild(pic)
