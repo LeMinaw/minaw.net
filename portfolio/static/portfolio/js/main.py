@@ -9,21 +9,20 @@ def name_opac(percent):
     document.getElementById("name").style.opacity = str(opac)
 
 def start():
-    scroller = Scroller(".scroll", callback=name_opac)
     gallery = Gallery(".imgcontainer")
-    if desktop_width():
-        scroller.draw()
+    scroller = Scroller(".scroll", speed=15, callback=name_opac)
 
     def on_resize():
         if desktop_width():
-            scroller.draw()
             gallery.draw(2)
+            scroller.draw()
         else:
-            scroller.destroy()
             gallery.destroy()
+            scroller.destroy()
     window.addEventListener("resize", on_resize)
 
     def on_load():
         if desktop_width():
             gallery.draw(2)
+            scroller.draw()
     window.addEventListener("load", on_load)

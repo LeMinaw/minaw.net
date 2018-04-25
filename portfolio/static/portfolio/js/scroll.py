@@ -1,8 +1,9 @@
 from utils import *
 
 class Scroller:
-    def __init__(self, select, width=None, height=None, callback=None):
+    def __init__(self, select, width=None, height=None, speed=1, callback=None):
         self.select   = select
+        self.speed    = speed
         self.callback = callback # In [0, 1]
         self.target_width  = width
         self.target_height = height
@@ -15,8 +16,8 @@ class Scroller:
         self.max_width = max([el.scrollWidth for el in self.elems])
 
         # Use the longest elements width if no width or height is specified
-        self.width  = self.target_width  or self.max_width
-        self.height = self.target_height or self.max_width
+        self.width  =  self.target_width  or self.max_width
+        self.height = (self.target_height or self.max_width) // self.speed
 
         # Set the body to the selected height
         document.body.style.height = to_px(self.height)
