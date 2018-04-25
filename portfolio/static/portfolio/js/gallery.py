@@ -25,13 +25,16 @@ class Gallery:
     def __init__(self, pics):
         self.pics = pics
         self.parent = pics[0].parentNode
-        self.init_widths = [pic.offsetWidth for pic in pics]
+        self.init_widths = None # Will be populated by first call of draw()
 
     def reset_widths(self):
         for pic, w in zip(self.pics, self.init_widths):
             pic.style.width = to_px(w)
 
     def draw(self, rows_nb):
+        if self.init_widths is None: # Saves initial pics width on first call
+            self.init_widths = [pic.offsetWidth for pic in self.pics]
+
         self.reset_widths()
 
         # Build rows array
