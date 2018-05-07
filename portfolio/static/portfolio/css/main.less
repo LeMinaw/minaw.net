@@ -9,8 +9,8 @@
 @black: rgba(0, 0, 0, .85);
 @links: rgb(10, 104, 145);
 @small: 768px;
-@font-head: 'Poiret One', cursive;
-@font-main: 'Comfortaa',  cursive;
+@font-head: 'Poiret One', Verdana, sans-serif;
+@font-main: 'Comfortaa',  Verdana, sans-serif;
 
 /* MIXINS */
 
@@ -58,6 +58,7 @@ h1 {
     @media (max-width: @small) {
         margin: 10px;
         text-align: center;
+        font-size: 40px;
     }
 }
 h2 { font-size: 32px }
@@ -81,6 +82,8 @@ header {
     z-index: 1000;
     border-bottom: 1px solid #000;
     .gentle-shadow(.5);
+
+    @media (max-width: @small) { display: none }
 
     a {
         display: inline-block;
@@ -151,7 +154,11 @@ footer {
         text-align: center;
     }
 
-    img { width: 100% }
+    img {
+        width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+    }
 
     p, li, pre {
         max-width: @small;

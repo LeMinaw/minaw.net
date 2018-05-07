@@ -1,7 +1,3 @@
-def total_width(elems):
-    """Cumulated width of <elems>."""
-    return sum([el.offsetWidth for el in elems])
-
 def empty(elem):
     """Removes all child nodes of <elem>."""
     while elem.firstChild is not None:
