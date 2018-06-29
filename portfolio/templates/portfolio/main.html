@@ -24,7 +24,7 @@
         <div class="imgcontainer">
           <div class="img">
             <a href="{{ work.get_absolute_url }}">
-              {% thumbnail work.cover "x300" as thumb %}
+              {% thumbnail work.cover "300x300" crop="noop" as thumb %}
                 <img src="{{ thumb.url }}" alt="{{ work.name }}">
               {% endthumbnail %}
 
