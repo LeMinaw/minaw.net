@@ -1,5 +1,6 @@
 {% extends "portfolio/base.html" %}
 
+{% load staticfiles %}
 {% load thumbnail %}
 
 {% block bodyparams %}
@@ -37,3 +38,8 @@
     </div>
   </div>
 {% endblock content %}
+
+{% block scripts %}
+  <script src="{% static 'portfolio/js/main.min.js' %}" charset="utf-8"></script>
+  <script>document.addEventListener('DOMContentLoaded', main.start, false);</script>
+{% endblock scripts %}

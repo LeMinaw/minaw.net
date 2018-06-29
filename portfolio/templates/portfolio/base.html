@@ -45,7 +45,9 @@
       </span></div>
     </footer>
 
-    <script src="{% static 'portfolio/js/main.min.js' %}" charset="utf-8"></script>
-    <script>document.addEventListener('DOMContentLoaded', main.start, false);</script>
+    {% block scripts %}
+      <script src="{% static 'portfolio/js/base.min.js' %}" charset="utf-8"></script>
+      <script>document.addEventListener('DOMContentLoaded', base.start, false);</script>
+    {% endblock scripts %}
   </body>
 </html>
