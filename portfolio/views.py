@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http      import HttpResponseRedirect, Http404
 from random           import choice
-from portfolio.models import *
+from portfolio.models import Category, Work
 
 
 def main(request, cat_slug=None):
@@ -24,7 +24,7 @@ def main(request, cat_slug=None):
         try:
             work_cover = choice(works.filter(bck=True))
         except IndexError:
-            work_cover = choice(Works.objects.filter(bck=True))
+            work_cover = choice(Work.objects.filter(bck=True))
 
     return render(request, "portfolio/main.html", locals())
 
@@ -56,8 +56,10 @@ def static_view(request, template):
     work_cover = choice(Work.objects.filter(bck=True))
     return render(request, template, locals())
 
+
 def contact(request):
     return static_view(request, "portfolio/contact.html")
+
 
 def labs(request):
     return static_view(request, "portfolio/labs.html")

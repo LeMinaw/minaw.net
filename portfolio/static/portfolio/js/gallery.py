@@ -1,4 +1,5 @@
-from utils import *
+from utils import empty, total_width, to_px, from_px, avg
+
 
 class Gallery:
     def __init__(self, selector):
@@ -6,14 +7,14 @@ class Gallery:
         Gallery."""
         self.pics = [pic for pic in document.querySelectorAll(selector)]
         self.parent = self.pics[0].parentNode
-        self.init_widths = None # Will be populated by first call of draw()
+        self.init_widths = None  # Will be populated by first call of draw()
 
     def reset_widths(self):
         for pic, w in zip(self.pics, self.init_widths):
             pic.style.width = to_px(w)
 
     def draw(self, rows_nb):
-        if self.init_widths is None: # Saves initial pics width on first call
+        if self.init_widths is None:  # Saves initial pics width on first call
             self.init_widths = [pic.offsetWidth for pic in self.pics]
 
         self.reset_widths()
@@ -46,7 +47,7 @@ class Gallery:
             self.parent.appendChild(br)
 
         # Set container width
-        self.parent.style.width = to_px(avg_width + 1) # Avoids rounding problems
+        self.parent.style.width = to_px(avg_width + 1)  # Rounding problems
         self.parent.parentNode.style.width = to_px(avg_width + 12 + 1)
 
     def destroy(self):

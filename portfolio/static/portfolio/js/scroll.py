@@ -1,10 +1,11 @@
-from utils import *
+from utils import to_px
+
 
 class Scroller:
     def __init__(self, select, width=None, height=None, speed=1, callback=None):
         self.select   = select
         self.speed    = speed
-        self.callback = callback # In [0, 1]
+        self.callback = callback  # In [0, 1]
         self.target_width  = width
         self.target_height = height
 
@@ -32,10 +33,10 @@ class Scroller:
         diff = doc_height - win_height
         scroll_percent = 0
         if diff != 0:
-            scroll_percent = y_offset / diff # Current percentual position
+            scroll_percent = y_offset / diff  # Current percentual position
 
-        if self.callback is not None: # BUG: callback is None, WTF
-            self.callback(scroll_percent) # Call the callback
+        if self.callback is not None:  # BUG: callback is None, WTF
+            self.callback(scroll_percent)  # Call the callback
 
         for el in self.elems:
             # delta_w = el.offsetWidth - win_width

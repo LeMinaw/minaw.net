@@ -2,6 +2,7 @@ from django.db.models import (Model, DateTimeField, SlugField, CharField,
     ImageField, TextField, BooleanField, ManyToManyField, AutoField)
 from django.urls import reverse
 
+
 class Work(Model):
     added     = DateTimeField(auto_now_add=True,        verbose_name="ajouté")
     modif     = DateTimeField(auto_now=True,            verbose_name="modifié")
