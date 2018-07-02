@@ -20,7 +20,7 @@
   <body {% block bodyparams %}{% endblock%}>
     <header>
       <a class="smallnav" onclick="toggleMenu()" title="Menu de navigation"><i class="fa fa-bars"></i></a>
-      <a class="{% if not categ %}active{% endif %}" href="{% url 'portfolio:main' %}">everything</a>
+      <a class="{% if not categ %}active{% endif %}" href="{% url 'portfolio:main' %}">réalisations</a>
       {% for baritem in categs %}
         <a class="{% if baritem == categ %}active{% endif %}" href="{{ baritem.get_absolute_url }}">{{ baritem.name }}</a>
       {% endfor %}
