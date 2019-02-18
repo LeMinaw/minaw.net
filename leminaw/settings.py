@@ -21,7 +21,13 @@ SECRET_KEY = 'DevKey'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "minaw.herokuapp.com", ".minaw.net", ".amazonaws.com"]
+ALLOWED_HOSTS = [
+    "127.0.0.0",
+    "127.0.0.1",
+    "minaw.herokuapp.com",
+    ".minaw.net",
+    ".amazonaws.com"
+]
 
 CSRF_COOKIE_AGE = None
 
