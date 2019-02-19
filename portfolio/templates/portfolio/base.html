@@ -2,7 +2,7 @@
 {% load thumbnail %}
 
 <!doctype html>
-<html lang="fr">
+<html lang="fr" {% block htmlparams %}{% endblock %}>
   <head>
     <meta charset="utf-8">
     <title>LeMinaw // Renaud Perrin</title>
@@ -17,7 +17,11 @@
     <link rel="stylesheet" href="{% static 'portfolio/css/main.css' %}"                                              type="text/css"/>
   </head>
 
-  <body {% block bodyparams %}{% endblock%}>
+  <body>
+    {% block scripts %}
+      <script src="{% static 'portfolio/js/return.js' %}"></script>
+    {% endblock scripts %}
+
     <header>
       <a class="smallnav" onclick="toggleMenu()" title="Menu de navigation"><i class="fa fa-bars"></i></a>
       <a class="{% if not categ %}active{% endif %}" href="{% url 'portfolio:main' %}">réalisations</a>
@@ -26,7 +30,7 @@
       {% endfor %}
     </header>
 
-    <div {% block bckparams %}class="background"{% endblock%}>
+    <div class="background">
       {% thumbnail work_cover.cover "300x300" crop="noop" as thumb %}
         <img src="{{ thumb.url }}" alt="{{ work_cover.name }}">
       {% endthumbnail %}
@@ -44,10 +48,5 @@
         <a href="{% url 'portfolio:contact' %}">Contact</a>
       </span></div>
     </footer>
-
-    {% block scripts %}
-      <script src="{% static 'portfolio/js/base.min.js' %}" charset="utf-8"></script>
-      <script>document.addEventListener('DOMContentLoaded', base.start, false);</script>
-    {% endblock scripts %}
   </body>
 </html>

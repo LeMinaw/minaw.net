@@ -3,43 +3,42 @@
 {% load staticfiles %}
 {% load thumbnail %}
 
-{% block bodyparams %}
-  class="hscroll"
-{% endblock bodyparams %}
-
-{% block bckparams %}
-  class="background scroll"
-{% endblock%}
+{% block htmlparams %}
+  class="noscroll"
+{% endblock %}
 
 {% block content %}
-  <div class="title scroll">
+  <div class="title">
     <div id="name">
       <h1 class="{% if not work_cover.black_txt %}white{% endif %}">leminaw // renaud perrin</h1>
     </div>
   </div>
 
-  <div class="wrapper scroll">
+  <div class="wrapper">
     <div id="gallery" class="content">
-      {% for work in works %}
-        <div class="imgcontainer">
-          <div class="img">
-            <a href="{{ work.get_absolute_url }}">
-              {% thumbnail work.cover "300x300" crop="noop" as thumb %}
-                <img src="{{ thumb.url }}" alt="{{ work.name }}">
-              {% endthumbnail %}
+      <div class="row">
+        {% for work in works %}
+          <div class="thumb">
+            <div class="imgcontainer">
+              <a href="{{ work.get_absolute_url }}">
+                {% thumbnail work.cover "300x300" crop="noop" as thumb %}
+                  <img src="{{ thumb.url }}" alt="{{ work.name }}" width="{{ thumb.width }}" height="{{ thumb.height }}">
+                {% endthumbnail %}
 
-              <div class="legend">
-                <span>{{ work.title }}</span>
-              </div>
-            </a>
+                <div class="legend">
+                  <span>{{ work.title }}</span>
+                </div>
+              </a>
+            </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
+      <div class="row"></div>
     </div>
   </div>
 {% endblock content %}
 
 {% block scripts %}
-  <script src="{% static 'portfolio/js/main.min.js' %}" charset="utf-8"></script>
-  <script>document.addEventListener('DOMContentLoaded', main.start, false);</script>
+  <script src="{% static 'portfolio/js/scroll.js' %}"></script>
+  <script src="{% static 'portfolio/js/gallery.js' %}"></script>
 {% endblock scripts %}

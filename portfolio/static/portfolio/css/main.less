@@ -43,22 +43,36 @@
 
 /* PAGE */
 
+html.noscroll { /* Disable scrollbars */
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+}
+
 html, body {
     padding: 0;
     margin: 0;
     font-family: @font-main;
     font-size: 16px;
-    // hide horizontal scrollbars, since vertical ones scroll horizontaly
-    &.hscroll { overflow-x: hidden }
+}
+
+body {
+    background-color: @white;
 }
 
 h1, h2, h3 { font-family: @font-head }
 h1 {
-    font-size: 72px;
-    @media (max-width: @small) {
-        margin: 10px;
-        text-align: center;
-        font-size: 40px;
+    margin: 10px 0 30px 0;
+    text-align: center;
+    font-size: 40px;
+    @media (min-width: @small) {
+        margin: 10vh 0 2vh 0;
+        font-size: 7vh;
     }
 }
 h2 { font-size: 32px }

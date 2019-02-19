@@ -1,89 +1,76 @@
 // main: main.less
 
-    /* COMMON */
+#gallery {
+    padding: 6px;
+    background: @white;
 
-    .imgcontainer {
+    transition: all .2s;
+
+    .thumb {
+        box-sizing: border-box;
+        height: 100%;
+        max-width: 500px;
         padding: 6px;
-        .box-sizing(border-box);
+        margin: auto; // Center thumbs
+    
+        transition: all .2s;
 
-        .img { position: relative }
+        .imgcontainer {
+            position: relative;
+            height: 100%;
 
-        img {
-            width: 100%;
-            object-fit: cover;
-            display: block;
-        }
+            img {
+                height: 100%;
+                width:  100%;
+                max-height: 50vh;
+                object-fit: cover;
+            }
 
-        .legend {
-            width: 100%;
-            padding: 6px 0;
-            text-align: center;
-            background: @black;
-            position: absolute;
-            bottom: 0;
-
-            span {
-                font-weight: 200;
-                color: @white;
+            .legend {
+                position: absolute;
+                bottom: 3px; // Ugly fix for alignement on mobile
+                width: 100%;
+                padding: 6px 0;
+                text-align: center;
+                background: @black;
+    
+                span {
+                    font-weight: 200;
+                    color: @white;
+                }
             }
         }
     }
 
-    /* MOBILE */
-
-    @media (max-width: @small) {
-        .content .imgcontainer {
-            position: relative;
-            margin: 10px auto;
-            width: 100%;
-            max-width: 310px;
-
-            img { max-height: 70vh }
-        }
-    }
-
-    /* DESKTOP */
+    /* Desktop */
 
     @media (min-width: @small) {
-        position: fixed;
+        height: 70vh;
+        max-height: 500px;
 
-        &.title {
-            top: 10vh;
+        .row {
+            display: flex;
+            height: 50%;
 
-            #name {
-                position: absolute;
-                left: 10vw;
-                line-height: 0;
-            }
-        }
+            .thumb {
+                margin: unset;
 
-        &.wrapper {
-            top: 25vh;
-            width: 100%;
-            padding-left: 18px; // Aligns the left edge with the scrollbar
-        }
-
-        .content {
-            position: absolute;
-            left: 0;
-
-            .imgcontainer {
-                float: left;
-
-                .img {
+                .imgcontainer {
                     .gentle-shadow(0);
                     transform: scale(1, 1);
                     transition: all .1s;
 
                     &:hover {
-                        transform: scale(1.5, 1.5);
+                        transform: scale(1.2, 1.2);
                         transition: all .3s;
                         position: relative; // Makes z-index effective on Chrome
                         z-index: 1000;
                         .gentle-shadow(.5);
                     }
 
-                    img { height: 200px }
+                    .legend { // Reverts hack used on mobile devices
+                        bottom: 0;
+                    }
                 }
             }
         }

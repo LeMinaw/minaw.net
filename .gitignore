@@ -16,7 +16,6 @@ staticfiles/
 media/
 *.sqlite3
 *.old
-__javascript__/
 
 # Security secrets
 settingsprod.py
@@ -32,7 +31,7 @@ pip-delete-this-directory.txt
 *.mo
 *.pot
 
-# Django stuff:
+# Django stuff
 *.log
 local-settings.py
 
