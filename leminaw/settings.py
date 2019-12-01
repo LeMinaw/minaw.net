@@ -37,6 +37,7 @@ CSRF_USE_SESSIONS = False
 # Application definition
 
 INSTALLED_APPS = (
+    'scout_apm.django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -157,6 +158,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 MEDIA_LOCATION = 'media'
+
+
+# Profiling
+
+SCOUT_NAME = "Minaw.net"
 
 
 # Prod settings
