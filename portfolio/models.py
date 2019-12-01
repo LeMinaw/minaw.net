@@ -36,6 +36,8 @@ class Work(Model):
             cols = ct.get_palette(3, quality=50)
         except Exception: # NoQA
             cols = ((255, 255, 255), (200, 200, 200), (220, 220, 220))
+        while len(cols) < 3:
+            cols.append(cols[0])
         self._palette = ';'.join([str(rgb_to_hex(col[:3])) for col in cols])
         # super().save()
     
