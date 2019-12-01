@@ -32,7 +32,10 @@ class Work(Model):
     def compute_color_palette(self):
         ct = ColorThief(self.cover)
         ct.image = ct.image.resize((100, 100))
-        cols = ct.get_palette(3, quality=50)
+        try:
+            cols = ct.get_palette(3, quality=50)
+        except Exception: # NoQA
+            cols = ((255, 255, 255), (200, 200, 200), (220, 220, 220))
         self._palette = ';'.join([str(rgb_to_hex(col[:3])) for col in cols])
         # super().save()
     
