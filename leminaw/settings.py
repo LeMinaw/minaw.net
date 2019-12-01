@@ -160,6 +160,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_LOCATION = 'media'
 
 
+# Thumbnails
+
+THUMBNAIL_FORCE_OVERWRITE = True
+
+
 # Profiling
 
 SCOUT_NAME = "Minaw.net"
