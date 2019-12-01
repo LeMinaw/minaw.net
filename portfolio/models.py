@@ -16,7 +16,7 @@ class Work(Model):
     pin       = BooleanField(default=False,             verbose_name="épinglé")
     black_txt = BooleanField(default=False,             verbose_name="texte noir")
     categ     = ManyToManyField('Category', blank=True, verbose_name="catégorie")
-    _palette  = CharField(max_length=20,    blank=True, verbose_name="palette")
+    _palette  = CharField(max_length=64,    blank=True, verbose_name="palette")
 
     def __str__(self):
         return self.title
