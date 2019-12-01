@@ -23,7 +23,7 @@ class Work(Model):
         return reverse('portfolio:work', kwargs={'work_slug': self.slug})
 
     class Meta:
-        verbose_name = "oeuvre"
+        verbose_name = "réalisation"
         ordering = ['-pin', '-added']
 
 
