@@ -68,6 +68,8 @@ MIDDLEWARE = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'customizable_django_profiler.cProfileMiddleware',
 )
 
 ROOT_URLCONF = 'leminaw.urls'
@@ -165,9 +167,13 @@ MEDIA_LOCATION = 'media'
 THUMBNAIL_FORCE_OVERWRITE = True
 
 
-# Profiling
+# Profiling and monitoring
 
 SCOUT_NAME = "Minaw.net"
+
+PROFILER = {
+    'activate': os.environ.get("CPROFILE") == 'TRUE'
+}
 
 
 # Prod settings
