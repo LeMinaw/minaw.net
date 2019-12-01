@@ -4,26 +4,26 @@
     padding: 6px;
     background: @white;
 
-    transition: all .2s;
-
     .thumb {
         box-sizing: border-box;
         height: 100%;
         max-width: 500px;
         padding: 6px;
         margin: auto; // Center thumbs
-    
-        transition: all .2s;
 
         .imgcontainer {
             position: relative;
             height: 100%;
+            overflow: hidden;
+            background-color: @white;
 
             img {
                 height: 100%;
                 width:  100%;
                 max-height: 50vh;
                 object-fit: cover;
+                .blur(0px);
+                transition: all ease-in-out 80ms;
             }
 
             .legend {
@@ -38,6 +38,10 @@
                     font-weight: 200;
                     color: @white;
                 }
+            }
+
+            .blur {
+                .blur(12px);
             }
         }
     }
@@ -58,11 +62,11 @@
                 .imgcontainer {
                     .gentle-shadow(0);
                     transform: scale(1, 1);
-                    transition: all .1s;
+                    transition: all ease-in-out .1s;
 
                     &:hover {
                         transform: scale(1.2, 1.2);
-                        transition: all .3s;
+                        transition: all ease-in-out .3s;
                         position: relative; // Makes z-index effective on Chrome
                         z-index: 1000;
                         .gentle-shadow(.5);

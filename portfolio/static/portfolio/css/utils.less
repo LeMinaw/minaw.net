@@ -3,7 +3,7 @@
 .blur (@amount) {
     filter: blur(@amount);
     -webkit-filter: blur(@amount);
-    transform: scale(1.05, 1.05);
+    transform: scale(unit(1 + @amount/100), unit(1 + @amount/100px));
 }
 
 .box-shadow (@string) {

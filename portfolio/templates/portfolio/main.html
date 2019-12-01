@@ -21,8 +21,10 @@
           <div class="thumb">
             <div class="imgcontainer">
               <a href="{{ work.get_absolute_url }}">
-                {% thumbnail work.cover "300x300" crop="noop" as thumb %}
-                  <img src="{{ thumb.url }}" alt="{{ work.name }}" width="{{ thumb.width }}" height="{{ thumb.height }}">
+                {% thumbnail work.cover "20x20" crop="noop" as thumb_placeholder %}
+                  {% thumbnail work.cover "300x300" crop="noop" as thumb %}
+                    <img class="blur" src="{{ thumb_placeholder.url }}" data-src="{{ thumb.url }}" alt="{{ work.name }}">
+                  {% endthumbnail %}
                 {% endthumbnail %}
 
                 <div class="legend">
