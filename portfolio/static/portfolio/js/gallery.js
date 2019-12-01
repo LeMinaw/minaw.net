@@ -1,21 +1,19 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     if (window.matchMedia("(min-width: 768px)").matches) {
         gallery = new Gallery();
     }
 
     var images = document.querySelectorAll('[data-src]');
-    window.addEventListener('scroll', function (e) {
+    window.addEventListener('scroll', function(e) {
         loadImageData(images);
     }, false);
-    window.addEventListener('load', function () {
-        setTimeout(function () {
-            loadImageData(images);
-        }, 50);
+    window.addEventListener('load', function(e) {
+        loadImageData(images);
     });
 });
 
 
-var isInViewport = function (el) {
+var isInViewport = function(el) {
     var bounding = el.getBoundingClientRect();
     return (
         bounding.bottom >= 0 &&
@@ -26,12 +24,12 @@ var isInViewport = function (el) {
 };
 
 
-var loadImageData = function (images) {
-    images.forEach(function (img) {
+var loadImageData = function(images) {
+    images.forEach(function(img) {
         if (img.getAttribute('loaded') != 'true' && isInViewport(img)) {
             img.setAttribute('src', img.getAttribute('data-src'));
             img.setAttribute('loaded', 'true');
-            img.addEventListener('load', function () {
+            img.addEventListener('load', function() {
                 // Remove blur only once image finished loading
                 img.classList.remove('blur');
             });
@@ -56,14 +54,14 @@ let Gallery = class {
         let me = this;
         let rows_widths = [0, 0];
         
-        me.thumbs.forEach(function (thumb) {
+        me.thumbs.forEach(function(thumb) {
             let img = thumb.querySelector('img');
             
             // Hide thumb before it is loaded
             thumb.style.display = 'none';
             img.style.width = 'initial';
 
-            img.addEventListener('load', function () {
+            img.addEventListener('load', function() {
                 if (img.getAttribute('width_computed') != 'true'){
                     // Reveal image after it is loaded for width calculations
                     thumb.style.display = 'initial';
