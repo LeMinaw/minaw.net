@@ -88,6 +88,5 @@ let Gallery = class {
                 me.gallery.style.width = Math.max(...rows_widths) + 'px';
             });
         });
-}
-  };
-  
+    }
+};
