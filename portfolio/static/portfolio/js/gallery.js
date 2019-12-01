@@ -33,7 +33,7 @@ var loadImageData = function (images) {
             img.setAttribute('loaded', 'true');
             img.addEventListener('load', function () {
                 // Remove blur only once image finished loading
-                img.classList.remove('blur');
+                img.classList.remove('fade');
             });
         }
     });
@@ -55,37 +55,39 @@ let Gallery = class {
     draw() {
         let me = this;
         let rows_widths = [0, 0];
-        
-        me.thumbs.forEach(function (thumb) {
-            let img = thumb.querySelector('img');
-            
-            // Hide thumb before it is loaded
-            thumb.style.display = 'none';
-            img.style.width = 'initial';
 
-            img.addEventListener('load', function () {
-                if (img.getAttribute('width_computed') != 'true'){
-                    // Reveal image after it is loaded for width calculations
-                    thumb.style.display = 'initial';
-                    
-                    if (rows_widths[0] <= rows_widths[1]) {
-                        me.rows[0].appendChild(thumb);
-                        rows_widths[0] += thumb.offsetWidth;
-                    } else {
-                        me.rows[1].appendChild(thumb);
-                        rows_widths[1] += thumb.offsetWidth;
-                    }
-
-                    // Set attrib so the image src can be changed without triggering width computation again
-                    img.setAttribute('width_computed', 'true');
-                    
-                    // Apply styles modifying size after width calculations
-                    thumb.style.flexGrow = '1';
-                    img.style.width = '100%';
-                    me.gallery.style.width = Math.max(...rows_widths) + 'px';
-                }
+        // Hide thumbs before they are computed
+        window.addEventListener('DOMContentLoaded', function () {
+            me.thumbs.forEach(function (thumb) {
+                thumb.style.display = 'none';
             });
         });
-    }
+
+        // Compute thumbs widths
+        window.addEventListener('load', function () {
+            me.thumbs.forEach(function (thumb) {
+                let img = thumb.querySelector('img');
+                
+                // Sets placeholder to initial width for calculations
+                img.style.width = 'initial';
+            
+                // Reveal image after it is loaded for width calculations
+                thumb.style.display = 'initial';
+                
+                if (rows_widths[0] <= rows_widths[1]) {
+                    me.rows[0].appendChild(thumb);
+                    rows_widths[0] += thumb.offsetWidth;
+                } else {
+                    me.rows[1].appendChild(thumb);
+                    rows_widths[1] += thumb.offsetWidth;
+                }
+
+                // Apply styles modifying size after width calculations
+                thumb.style.flexGrow = '1';
+                img.style.width = '100%';
+                me.gallery.style.width = Math.max(...rows_widths) + 'px';
+            });
+        });
+}
   };
   
