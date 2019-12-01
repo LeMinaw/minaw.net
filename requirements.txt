@@ -12,7 +12,7 @@ dj-database-url==0.4.2
 Django==2.2.4
 django-markwhat==1.5.1
 django-storages==1.6.3
-sorl-thumbnail==12.5.0
+sorl-thumbnail==12.4.1
 docutils==0.13.1
 future==0.16.0
 gunicorn==19.7.1
