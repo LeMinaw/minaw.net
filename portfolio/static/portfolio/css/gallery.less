@@ -4,31 +4,32 @@
     padding: 6px;
     background: @white;
 
-    transition: all .2s;
-
     .thumb {
         box-sizing: border-box;
         height: 100%;
         max-width: 500px;
         padding: 6px;
         margin: auto; // Center thumbs
-    
-        transition: all .2s;
 
         .imgcontainer {
             position: relative;
             height: 100%;
+            overflow: hidden;
+            background-color: @white;
 
             img {
+                display: block;
                 height: 100%;
                 width:  100%;
                 max-height: 50vh;
                 object-fit: cover;
+                opacity: 1;
+                transition: opacity ease-in-out 80ms;
             }
 
             .legend {
                 position: absolute;
-                bottom: 3px; // Ugly fix for alignement on mobile
+                bottom: 0;
                 width: 100%;
                 padding: 6px 0;
                 text-align: center;
@@ -38,6 +39,10 @@
                     font-weight: 200;
                     color: @white;
                 }
+            }
+
+            .fade {
+                opacity: 0;
             }
         }
     }
@@ -58,11 +63,11 @@
                 .imgcontainer {
                     .gentle-shadow(0);
                     transform: scale(1, 1);
-                    transition: all .1s;
+                    transition: transform .1s;
 
                     &:hover {
                         transform: scale(1.2, 1.2);
-                        transition: all .3s;
+                        transition: transform .3s;
                         position: relative; // Makes z-index effective on Chrome
                         z-index: 1000;
                         .gentle-shadow(.5);

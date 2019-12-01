@@ -19,10 +19,10 @@
       <div class="row">
         {% for work in works %}
           <div class="thumb">
-            <div class="imgcontainer">
+            <div class="imgcontainer" style="{{ work.get_css_gradient }}">
               <a href="{{ work.get_absolute_url }}">
                 {% thumbnail work.cover "300x300" crop="noop" as thumb %}
-                  <img src="{{ thumb.url }}" alt="{{ work.name }}" width="{{ thumb.width }}" height="{{ thumb.height }}">
+                  <img class="fade" src="{{ work.get_svg_placeholder }}" data-src="{{ thumb.url }}" alt="{{ work.title }}">
                 {% endthumbnail %}
 
                 <div class="legend">
