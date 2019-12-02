@@ -6,7 +6,7 @@ cffi==1.10.0
 colorama==0.3.9
 git+git://github.com/gsornsen/color-thief-py@44d5821#egg=colorthief
 CommonMark==0.7.3
-customizable-django-profiler==0.1
+git+git://github.com/someshchaturvedi/customizable-django-profiler@cd0a868#egg=customizable-django-profiler
 cycler==0.10.0
 decorator==4.0.11
 dill==0.2.6
