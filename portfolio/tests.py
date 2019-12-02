@@ -3,12 +3,6 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from PIL import Image
 from .utils import rgb_to_hex, hex_to_rgb
 from .models import Work
-
-
-# def make_solid_image(temp_file):
-#     image = Image.new("RGB", (200, 200), (255, 0, 0))
-#     image.save(temp_file, 'jpeg')
-#     return temp_file
             
 
 class ColorConversionTestCase(TestCase):
@@ -21,7 +15,7 @@ class ColorConversionTestCase(TestCase):
         self.assertEqual(hex_to_rgb(cyan), (0,   255, 255))
         self.assertEqual(hex_to_rgb(yellow), (255, 255, 0))
 
-    def test_hex_to_rgb(self):
+    def test_rgb_to_hex(self):
         magenta = (255, 0, 255)
         self.assertEqual(rgb_to_hex(magenta).lower(), "ff00ff")
 
