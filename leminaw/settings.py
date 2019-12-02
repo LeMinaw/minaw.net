@@ -167,6 +167,15 @@ MEDIA_LOCATION = 'media'
 THUMBNAIL_FORCE_OVERWRITE = True
 
 
+# Caches
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
+    }
+}
+
+
 # Profiling and monitoring
 
 SCOUT_NAME = "Minaw.net"
@@ -202,6 +211,17 @@ if os.environ.get("PROD") == 'TRUE':
     STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 
     MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIA_LOCATION)
+
+    CACHES = {
+        'default': {
+            'BACKEND': 'django_bmemcached.memcached.BMemcached',
+            'LOCATION': os.environ.get('MEMCACHEDCLOUD_SERVERS').split(','),
+            'OPTIONS': {
+                'username': os.environ.get('MEMCACHEDCLOUD_USERNAME'),
+                'password': os.environ.get('MEMCACHEDCLOUD_PASSWORD')
+            }
+        }
+    }
 
     LOGGING = {
         'version': 1,
