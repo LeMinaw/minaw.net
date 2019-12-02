@@ -1,22 +1,25 @@
-from django.db.models import (Model, DateTimeField, SlugField, CharField,
-    ImageField, TextField, BooleanField, ManyToManyField, AutoField)
+from django.db.models import (Model, DateTimeField, SlugField,
+    CharField, ImageField, TextField, BooleanField, ManyToManyField,
+    AutoField, PositiveSmallIntegerField)
 from django.urls import reverse
 from colorthief import ColorThief
 from .utils import rgb_to_hex, hex_to_rgb, alpha
 
 class Work(Model):
-    added     = DateTimeField(auto_now_add=True,        verbose_name="ajouté")
-    modif     = DateTimeField(auto_now=True,            verbose_name="modifié")
-    slug      = SlugField(unique=True,                  verbose_name="identifiant")
-    title     = CharField(max_length=64,                verbose_name="titre")
-    subtitle  = CharField(max_length=128,   blank=True, verbose_name="sous-titre")
-    cover     = ImageField(                             verbose_name="couverture")
-    content   = TextField(                  blank=True, verbose_name="contenu")
-    bck       = BooleanField(default=False,             verbose_name="arrière-plan")
-    pin       = BooleanField(default=False,             verbose_name="épinglé")
-    black_txt = BooleanField(default=False,             verbose_name="texte noir")
-    categ     = ManyToManyField('Category', blank=True, verbose_name="catégorie")
-    _palette  = CharField(max_length=64,    blank=True, verbose_name="palette")
+    added     = DateTimeField(auto_now_add=True,                          verbose_name="ajouté")
+    modif     = DateTimeField(auto_now=True,                              verbose_name="modifié")
+    slug      = SlugField(unique=True,                                    verbose_name="identifiant")
+    title     = CharField(max_length=64,                                  verbose_name="titre")
+    subtitle  = CharField(max_length=128,                     blank=True, verbose_name="sous-titre")
+    cover     = ImageField(width_field='cover_w', height_field='cover_h', verbose_name="couverture")
+    cover_w   = PositiveSmallIntegerField(null=True,                      verbose_name="largeur couverture")
+    cover_h   = PositiveSmallIntegerField(null=True,                      verbose_name="hauteur couverture")
+    content   = TextField(                  blank=True,                   verbose_name="contenu")
+    bck       = BooleanField(default=False,                               verbose_name="arrière-plan")
+    pin       = BooleanField(default=False,                               verbose_name="épinglé")
+    black_txt = BooleanField(default=False,                               verbose_name="texte noir")
+    categ     = ManyToManyField('Category', blank=True,                   verbose_name="catégorie")
+    _palette  = CharField(max_length=64,    blank=True,                   verbose_name="palette")
 
     def __str__(self):
         return self.title
@@ -25,9 +28,15 @@ class Work(Model):
         return reverse('portfolio:work', kwargs={'work_slug': self.slug})
 
     def get_svg_placeholder(self):
+        if self.cover_w is None or self.cover_h is None:
+            self.save() # To generate image dimensions
+        w, h = self.cover_w, self.cover_h
         return ('data:image/svg+xml,'
-            '%3Csvg xmlns="http://www.w3.org/2000/svg" '
-            f'viewBox="0 0 {self.cover.width} {self.cover.height}"%3E%3C/svg%3E')
+            '<svg xmlns="http://www.w3.org/2000/svg" '
+            f'viewBox="0 0 {w} {h}"></svg>')
+        # return ('data:image/svg+xml,'
+        #     '%3Csvg xmlns="http://www.w3.org/2000/svg" '
+        #     f'viewBox="0 0 {w} {h}"%3E%3C/svg%3E')
     
     def compute_color_palette(self):
         ct = ColorThief(self.cover)
