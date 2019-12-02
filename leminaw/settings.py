@@ -172,7 +172,11 @@ THUMBNAIL_FORCE_OVERWRITE = True
 SCOUT_NAME = "Minaw.net"
 
 PROFILER = {
-    'activate': os.environ.get("CPROFILE") == 'TRUE'
+    'activate': True,
+    'output': ['response'],
+    'trigger' : 'query_param:cprof',
+    'count': '200',
+    'sort': 'cumtime'
 }
 
 
@@ -210,6 +214,8 @@ if os.environ.get("PROD") == 'TRUE':
             }
         }
     }
+    
+    PROFILER['activate'] = os.environ.get("CPROFILE") == 'TRUE',
 
 else:
     print("No production settings found, using dev settings.")
