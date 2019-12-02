@@ -215,7 +215,7 @@ if os.environ.get("PROD") == 'TRUE':
         }
     }
     
-    PROFILER['activate'] = os.environ.get("CPROFILE") == 'TRUE',
+    PROFILER['activate'] = os.environ.get("CPROFILE") == 'TRUE'
 
 else:
     print("No production settings found, using dev settings.")
