@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http      import HttpResponseRedirect, Http404
-from random           import choice
 from portfolio.models import Category, Work
 
 
@@ -8,7 +7,8 @@ def main(request, cat_slug=None):
     categs = Category.objects.all()
     if cat_slug is None:
         works = Work.objects.all()
-        work_cover = choice(works.filter(bck=True))
+        work_cover = works.filter(bck=True).order_by('?').first()
+        categ = None
     else:
         try:
             categ = Category.objects.get(slug=cat_slug)
@@ -21,10 +21,8 @@ def main(request, cat_slug=None):
                 return HttpResponseRedirect(request.get_full_path() + '/')
 
         works = Work.objects.filter(categ=categ)
-        try:
-            work_cover = choice(works.filter(bck=True))
-        except IndexError:
-            work_cover = choice(Work.objects.filter(bck=True))
+        work_cover = (works.filter(bck=True).order_by('?').first()
+            or Work.objects.filter(bck=True).order_by('?').first())
 
     return render(request, "portfolio/main.html", locals())
 
@@ -34,10 +32,8 @@ def work(request, work_slug):
     work = Work.objects.get(slug=work_slug)
     work_categs = work.categ.all()
 
-    try:
-        work_cover = choice(Work.objects.filter(categ__in=work_categs, bck=True))
-    except IndexError:
-        work_cover = choice(Work.objects.filter(bck=True))
+    work_cover = (Work.objects.filter(categ__in=work_categs, bck=True).order_by('?').first()
+        or Work.objects.filter(bck=True).order_by('?').first())
 
     try:
         prev_work = Work.get_previous_by_added(work)
@@ -53,7 +49,7 @@ def work(request, work_slug):
 
 def static_view(request, template):
     categs = Category.objects.all()
-    work_cover = choice(Work.objects.filter(bck=True))
+    work_cover = Work.objects.filter(bck=True).order_by('?').first()
     return render(request, template, locals())
 
 
