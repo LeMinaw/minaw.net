@@ -142,6 +142,8 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 AWS_S3_REGION_NAME = "eu-west-2"
 
+AWS_DEFAULT_ACL = 'public-read'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
