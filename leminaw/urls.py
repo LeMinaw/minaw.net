@@ -19,6 +19,12 @@ urlpatterns = [
     url(r'^',          include("portfolio.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls))
+    ] + urlpatterns
+
 handler400 = create_error_view(code=400)
 handler403 = create_error_view(code=403)
 handler404 = create_error_view(code=404)

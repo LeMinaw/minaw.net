@@ -20,9 +20,12 @@ SECRET_KEY = 'DevKey'
 
 DEBUG = True
 
-ALLOWED_HOSTS = [
+INTERNAL_IPS = [
     "127.0.0.0",
-    "127.0.0.1",
+    "127.0.0.1"
+]
+
+ALLOWED_HOSTS = INTERNAL_IPS + [
     "minaw.herokuapp.com",
     ".minaw.net",
     ".amazonaws.com"
@@ -47,6 +50,7 @@ INSTALLED_APPS = (
     'storages',
     'django_markwhat',
     'sorl.thumbnail',
+    'debug_toolbar',
 
     'namegen',
     'dynimg',
@@ -60,6 +64,8 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE = (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -67,8 +73,6 @@ MIDDLEWARE = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'customizable_django_profiler.cProfileMiddleware',
 )
 
 ROOT_URLCONF = 'leminaw.urls'
@@ -238,7 +242,5 @@ if os.environ.get("PROD") == 'TRUE':
         }
     }
     
-    PROFILER['activate'] = os.environ.get("CPROFILE") == 'TRUE'
-
 else:
     print("No production settings found, using dev settings.")
