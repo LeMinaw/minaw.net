@@ -1,6 +1,7 @@
 from django.db.models import (Model, DateTimeField, SlugField,
-    CharField, ImageField, TextField, BooleanField, ManyToManyField,
+    CharField, TextField, BooleanField, ManyToManyField,
     AutoField, PositiveSmallIntegerField)
+from sorl.thumbnail import ImageField
 from django.urls import reverse
 from colorthief import ColorThief
 from .utils import rgb_to_hex, hex_to_rgb, alpha

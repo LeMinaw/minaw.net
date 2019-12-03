@@ -167,6 +167,8 @@ MEDIA_LOCATION = 'media'
 
 THUMBNAIL_FORCE_OVERWRITE = True
 
+THUMBNAIL_DEBUG = True
+
 
 # Caches
 
