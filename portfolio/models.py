@@ -2,6 +2,7 @@ from django.db.models import (Model, DateTimeField, SlugField,
     CharField, TextField, BooleanField, ManyToManyField,
     AutoField, PositiveSmallIntegerField)
 from sorl.thumbnail import ImageField
+from django.db.models.signals import post_init
 from django.urls import reverse
 from colorthief import ColorThief
 from .utils import rgb_to_hex, hex_to_rgb, alpha
@@ -14,7 +15,7 @@ class Work(Model):
     slug      = SlugField(unique=True,                                    verbose_name="identifiant")
     title     = CharField(max_length=64,                                  verbose_name="titre")
     subtitle  = CharField(max_length=128,            blank=True,          verbose_name="sous-titre")
-    cover     = ImageField(width_field='cover_w', height_field='cover_h', verbose_name="couverture")
+    cover     = ImageField(                                               verbose_name="couverture")
     cover_w   = PositiveSmallIntegerField(null=True, blank=True,          verbose_name="largeur couverture")
     cover_h   = PositiveSmallIntegerField(null=True, blank=True,          verbose_name="hauteur couverture")
     content   = TextField(                           blank=True,          verbose_name="contenu")
@@ -29,14 +30,19 @@ class Work(Model):
 
     def get_absolute_url(self):
         return reverse('portfolio:work', kwargs={'work_slug': self.slug})
+    
+    def get_cover_dimensions(self):
+        if self.cover_w is None or self.cover_h is None:
+            self.cover_w = self.cover.width
+            self.cover_h = self.cover.height
+            self.save(compute_palette=False, compute_dimensions=False)
+        return self.cover_w, self.cover_h
 
     def get_svg_placeholder(self):
-        if self.cover_w is None or self.cover_h is None:
-            self.save(compute_palette=False) # To generate image dimensions
-        w, h = self.cover_w, self.cover_h
+        w, h = self.get_cover_dimensions()
         return ('data:image/svg+xml,'
-            '<svg xmlns="http://www.w3.org/2000/svg" '
-            f'viewBox="0 0 {w} {h}"></svg>')
+            f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}"></svg>'
+        )
     
     def compute_color_palette(self):
         self.cover.open() # Fixes a bug in file handling due to w/h update
@@ -64,14 +70,20 @@ class Work(Model):
             f'linear-gradient(120deg, {alpha(cols[1], 0.8)}, {alpha(cols[1], 0.2)} 60%),'
             f'linear-gradient(240deg, {alpha(cols[2], 0.8)}, {alpha(cols[2], 0.2)} 60%);')
     
-    def save(self, compute_palette=True, *args, **kwargs):
+    def save(self, compute_palette=True, compute_dimensions=True, *args, **kwargs):
         if compute_palette:
             self.compute_color_palette()
+        if compute_dimensions:
+            self.get_cover_dimensions()
         super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = "réalisation"
         ordering = ['-pin', '-added']
+
+# Needed to fix a hudge performance issue related to S3 storage.
+# Work model implements its own logic to access cover dimensions.
+post_init.disconnect(ImageField.update_dimension_fields)
 
 
 class Category(Model):
