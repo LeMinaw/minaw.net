@@ -14,6 +14,29 @@ class WorkAdmin(admin.ModelAdmin):
     ordering            = ('slug', 'title')
     search_fields       = ('title', 'subtitle', 'content')
 
+    fieldsets = (
+        (None, {
+            'fields': (
+                'title', 'slug', 'subtitle',
+                'content', 'categ', 'pin'
+            )
+        }),
+        ("Couverture", {
+            'fields': (
+                'cover', 'bck', 'black_txt',
+                'cover_w', 'cover_h', '_palette'
+            ),
+        }),
+        ("Horodatage", {
+            'classes': ('collapse',),
+            'fields': ('added', 'modif'),
+        }),
+    )
+    filter_horizontal = ('categ',)
+    readonly_fields = (
+        'cover_w', 'cover_h', '_palette',
+        'added', 'modif'
+    )
     prepopulated_fields = {'slug': ('title',)}
 
 @admin.register(Category)
