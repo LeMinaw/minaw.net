@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
 
                 if (!scrolling) { target = window.scrollX } // Resync with window pos
-                target += e.deltaY*50;
+                target += Math.sign(e.deltaY) * 100;
                 window.clearTimeout(timeout); // Flush old timeout
                 scrolling = true;
                 window.scrollTo({
@@ -21,6 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        document.addEventListener('wheel', scrollX);
+        document.addEventListener('wheel', scrollX, { passive: false });
     }
 });
