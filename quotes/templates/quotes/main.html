@@ -4,7 +4,7 @@
 
 {% block content %}
   <blockquote>
-    <p id="quote">{{ quote.text }}</p>
+    <p id="quote">{{ quote.text|linebreaksbr }}</p>
   </blockquote>
   <p id="meta">{{ quote.author }}, {{ quote.year }}.</p>
   <div class="button">
