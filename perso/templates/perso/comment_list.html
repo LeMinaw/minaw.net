@@ -14,8 +14,9 @@
   <h6 class="w3-margin-top w3-center">Aucun commentaire pour le moment. :-(</h6>
 {% endfor %}
 <p class="w3-clear w3-margin-bottom"></p>
-  <hr>
-  <h3>Ajoutez un commentaire !</h3>
+{% comment %}
+<hr>
+<h3>Ajoutez un commentaire !</h3>
 <form action="" method="post">
   {% csrf_token %}
   <input type="hidden" name="{{ comForm.publi.html_name }}" value="{{ publication.id }}"/>
@@ -34,3 +35,4 @@
   {{ comForm.content.label_tag }} {{ comForm.content|addcss:'w3-input w3-border w3-margin-bottom'}}
   <button name="comment" type="submit" class="w3-button w3-block w3-large w3-blue-gray">Envoyer <i class="fa fa-send-o"></i></button>
 </form>
+{% endcomment %}
