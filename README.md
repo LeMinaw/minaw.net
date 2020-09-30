@@ -10,7 +10,7 @@ My personal blog.
 
 My portfolio.
 
-## Avatar - it is an amazing project also name too
+## Avatar - it is an amazing project, also name too
 
 Procedural avatar generator.
 
