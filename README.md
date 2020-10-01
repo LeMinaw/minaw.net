@@ -30,7 +30,7 @@ Top-secret project !
 
 Website for giving feedbacks about some teachers in my school.
 
-## Quotes
+##  Quotes
 
 Super-simple quotes app.
 
