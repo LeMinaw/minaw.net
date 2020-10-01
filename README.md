@@ -1,6 +1,6 @@
 # minaw.net
 
-This repo contains several personal web projects, mainly using the Django framework.
+This repo contains severals personal web projects, mainly using the Django framework.
 
 ## Perso
 
@@ -24,7 +24,7 @@ Fantasy name generator.
 
 ## Playel
 
-Top-secret project !
+Top-secret projects !
 
 ## Profs
 
@@ -36,4 +36,4 @@ Super-simple quotes app.
 
 ## Register
 
-Skywanderers registration app.
+Skywanderers registrations app.
