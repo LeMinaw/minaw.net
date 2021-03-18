@@ -25,7 +25,7 @@ multiprocess==0.70.5
 numpy==1.12.1
 olefile==0.44
 opencv-python==3.2.0.6
-Pillow==4.0.0
+Pillow==8.1.1
 psycopg2==2.8.4
 py==1.4.33
 pycparser==2.17
