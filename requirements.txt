@@ -39,6 +39,5 @@ pytools==2016.2.6
 pytz==2018.3
 requests==2.22.0
 s3transfer==0.2.1
-scout-apm==2.9.0
 six==1.10.0
 whitenoise==3.3.0

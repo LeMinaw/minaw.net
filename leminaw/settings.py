@@ -39,7 +39,6 @@ CSRF_USE_SESSIONS = False
 # Application definition
 
 INSTALLED_APPS = (
-    'scout_apm.django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -186,8 +185,6 @@ CACHES = {
 
 
 # Profiling and monitoring
-
-SCOUT_NAME = "Minaw.net"
 
 PROFILER = {
     'activate': True,
