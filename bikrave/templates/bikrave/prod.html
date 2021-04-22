@@ -1,0 +1,14 @@
+{% extends 'bikrave/base.html' %}
+
+{% block title %}:PROD{% endblock %}
+
+{% block content %}
+    <h2>Bikrave Crew</h2>
+    <quote>On fait de l'indus et du hardcore, mais en fait c'est souvent les deux.</quote>
+    
+    {% for artist in artists %}
+        <a href="{{ artist.get_absolute_url }}">
+            {% include 'bikrave/artistcard.html' %}
+        </a>
+    {% endfor %}
+{% endblock %}

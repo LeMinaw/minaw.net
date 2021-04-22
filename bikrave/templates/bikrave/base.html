@@ -1,0 +1,34 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'bikrave/css/style.css' %}">
+    <link rel="icon" href="{% static 'bikrave/img/icon2.png' %}">
+    <title>BIKRAVE{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <header class="{% block header_class %}{% endblock %}">
+        <img id="logo" src="{% static 'bikrave/img/logo.svg' %}" alt="Logo Bikrave"/>
+        <nav>
+            <ul>
+                <li class="{% if categ == 'sound' %}active{% endif %}"><a href="{% url 'bikrave:sound' %}">SOUND</a></li>
+                <li class="{% if categ == 'prod' %}active{% endif %}"><a href="{% url 'bikrave:prod' %}">PROD</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <p>🄯2019 Bikrave Soundsystem</p>
+        <p>Aucun droit réservé parce qu'on encule les copyrights.</p>
+    </footer>
+</body>
+
+</html>

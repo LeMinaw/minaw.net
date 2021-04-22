@@ -60,7 +60,8 @@ INSTALLED_APPS = (
     'avatar',
     'quotes',
     'register',
-    'portfolio'
+    'portfolio',
+    'bikrave',
 )
 
 MIDDLEWARE = (
@@ -189,13 +190,10 @@ CACHES = {
 
 SCOUT_NAME = "Minaw.net"
 
-PROFILER = {
-    'activate': True,
-    'output': ['response'],
-    'trigger' : 'query_param:cprof',
-    'count': '200',
-    'sort': 'cumtime'
-}
+
+# Misc
+
+SND_CLIENT_ID = "BeGVhOrGmfboy1LtiHTQF6Ejpt9ULJCI"
 
 
 # Prod settings

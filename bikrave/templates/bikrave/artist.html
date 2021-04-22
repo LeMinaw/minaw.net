@@ -1,0 +1,15 @@
+{% extends 'bikrave/base.html' %}
+
+{% block title %}:{{artist|upper}}{% endblock %}
+
+{% block content %}
+    {% include 'bikrave/artistcard.html' %}
+    <h2>Tracks</h2>
+    {% for work in artist.works.all %}
+        <a href={{work.url}} class="work">
+            {{work}}
+            <img class="cover" src={{work.cover_url}} alt="Couverture de {{work}}"/>
+            <img class="waveform" src={{work.waveform_url}} alt="Forme d'onde de {{work}}"/>
+        </a>
+    {% endfor %}
+{% endblock %}
