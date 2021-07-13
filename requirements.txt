@@ -25,7 +25,7 @@ numpy==1.20.2
 olefile==0.44
 Pillow==8.2.0
 psycopg2==2.8.4
-py==1.4.33
+py==1.10.0
 pycparser==2.17
 Pygments==2.2.0
 pyparsing==2.2.0
