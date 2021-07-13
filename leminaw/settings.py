@@ -27,7 +27,7 @@ INTERNAL_IPS = [
 
 ALLOWED_HOSTS = INTERNAL_IPS + [
     "minaw.herokuapp.com",
-    ".minaw.net",
+    ".synthes.es",
     ".amazonaws.com"
 ]
 
