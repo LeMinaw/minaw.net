@@ -12,7 +12,7 @@ dill==0.2.6
 dj-database-url==0.4.2
 Django==2.2.28
 django-bmemcached==0.2.4
-django-debug-toolbar==2.1
+django-debug-toolbar==2.2.1
 django-markwhat==1.5.1
 django-storages==1.8
 sorl-thumbnail==12.5.0
