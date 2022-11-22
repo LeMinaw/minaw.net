@@ -23,7 +23,7 @@ jmespath==0.9.3
 multiprocess==0.70.5
 numpy==1.20.2
 olefile==0.44
-Pillow==8.2.0
+Pillow==9.3.0
 psycopg2==2.8.4
 py==1.4.33
 pycparser==2.17
