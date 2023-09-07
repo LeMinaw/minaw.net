@@ -1,10 +1,9 @@
-#-*- coding: utf-8 -*-
+from django.urls import path
 
-from django.conf.urls import url
-from . import views
+from quotes import views
 
 app_name = "quotes"
 urlpatterns = [
-    url(r'^$',                 views.main, name="main"),
-    url(r'^(?P<id>[0-9]+)/?$', views.main, name="main"),
+    path("", views.main, name="main"),
+    path("<int:id>", views.main, name="main"),
 ]

@@ -1,7 +1,9 @@
+from random import choice
+
+from django.http import Http404
 from django.shortcuts import render
-from django.http      import Http404
-from quotes.models    import *
-from random           import choice
+
+from quotes.models import *
 
 
 def main(request, id=None):
@@ -11,6 +13,6 @@ def main(request, id=None):
         try:
             quote = Quote.objects.get(pk=id)
         except Quote.DoesNotExist:
-            raise Http404("Citation introuvable :-(")
+            raise Http404("Citation introuvable")
 
-    return render(request, "quotes/main.html", locals())
+    return render(request, "quotes/main.html", context={"quote": quote})

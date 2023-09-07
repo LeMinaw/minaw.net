@@ -38,6 +38,9 @@ local-settings.py
 # pyenv
 .python-version
 
+# pdm
+.pdm-python
+
 # dotenv
 .env
 

@@ -1,0 +1,31 @@
+[project]
+name = "syntheses"
+version = "1.0.0"
+description = "Synthes.es web apps."
+authors = [
+    {name = "Triphase", email = "triphase@synthes.es"},
+]
+dependencies = [
+    "django~=4.2",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=23.7.0",
+    "isort>=5.12.0",
+]
+
+[tool.black]
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | migrations
+)/
+'''
+
+[tool.isort]
+profile = "black"
