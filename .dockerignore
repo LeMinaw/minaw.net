@@ -1,0 +1,12 @@
+fly.toml
+
+.git/
+
+*.sqlite3
+
+__pycache__/
+.venv/
+*.pyc
+.pdm-python
+
+README.md
