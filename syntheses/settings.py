@@ -12,9 +12,9 @@ DEBUG = bool(int(getenv("DEBUG", "1")))
 
 SECRET_KEY = getenv("SECRET_KEY", "django-insecure")
 
-ALLOWED_HOSTS = ["syntheses-app.fly.dev", ".synthes.es"]
+ALLOWED_HOSTS = ["syntheses-app.fly.dev", ".synthetize.me"]
 
-CSRF_TRUSTED_ORIGINS = ["https://syntheses-app.fly.dev", "https://apps.synthes.es"]
+CSRF_TRUSTED_ORIGINS = ["https://syntheses-app.fly.dev", "https://apps.synthetize.me"]
 
 
 # Application definition

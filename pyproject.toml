@@ -1,9 +1,9 @@
 [project]
 name = "syntheses"
 version = "1.0.0"
-description = "Synthes.es web apps."
+description = "Synthetize.me web apps."
 authors = [
-    {name = "Triphase", email = "triphase@synthes.es"},
+    {name = "Triphase", email = "triphase@synthetize.me"},
 ]
 dependencies = [
     "django~=4.2",
